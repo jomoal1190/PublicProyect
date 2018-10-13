@@ -38,7 +38,7 @@ $(document).ready(function() {
 	
 	
 	 $('#regresar').click(function(){
-		 document.location.href = '/listPuestos'
+		 document.location.href = '/gestion/puestos/listPuestos'
 		}); 
 
 	});

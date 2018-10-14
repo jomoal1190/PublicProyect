@@ -19,6 +19,13 @@ jQuery(function($){
 						position: 'right'  // display the tips to the right of the element
 				    });
 					
+					$("input[name], select[name], span.fancyFiled", "#formularioEmpleado").tooltipster({ 
+						trigger: 'custom', // default is 'hover' which is no good here
+						onlyOne: false,    // allow multiple tips to be open at a time
+						position: 'right'  // display the tips to the right of the element
+				    });
+					
+					
 					
 					
 					$.validator.addMethod("phoneNumber", function(value, element){
@@ -29,26 +36,6 @@ jQuery(function($){
 					    return this.optional(element) || $(element).val() >= $(params).val();
 					});
 					
-					$.validator.addMethod("dateBCR", function ( value, element ) {
-						var check = false,
-						re = /^\d{1,2}\/\d{1,2}\/\d{4}$/,
-						adata, gg, mm, aaaa, xdata;
-						if ( re.test( value ) ) {
-							adata = value.split( "/" );
-							gg = parseInt( adata[ 0 ], 10 );
-							mm = parseInt( adata[ 1 ], 10 );
-							aaaa = parseInt( adata[ 2 ], 10 );
-							xdata = new Date( Date.UTC( aaaa, mm - 1, gg, 12, 0, 0, 0 ) );
-							if ( ( xdata.getUTCFullYear() === aaaa ) && ( xdata.getUTCMonth() === mm - 1 ) && ( xdata.getUTCDate() === gg ) ) {
-								check = true;
-							} else {
-								check = false;
-							}
-						} else {
-							check = false;
-						}
-						return this.optional( element ) || check;
-					});
 					
 					
 					$("#formularioPuesto").validate({
@@ -116,10 +103,143 @@ jQuery(function($){
 					
 					
 					
+//					VALIDACION DE EMPLEADO
+					$("#formularioEmpleado").validate({
+						rules : {
+							nombres : {
+								required : true,
+							},
+							apellidos : {
+								required : true,
+							},
+							direccion : {
+								required : true,
+							},
+							telefono : {
+								required : true,
+								phoneNumber: true,
+							},
+							dpi : {
+								required : true,
+							},
+							genero : {
+								required : true,
+							},
+							fecha_nacimiento : {
+								required : true,
+							},
+							fecha_ingreso : {
+								required : true,
+							},
+							fecha_inicio : {
+								required : true,
+							},
+							puesto : {
+								required : true,
+							},
+							
+							
+						},
+						messages : {
+							nombres : {
+								required : msgRequiredGeneric,
+							},
+							apellidos : {
+								required : msgRequiredGeneric,
+							},
+							direccion : {
+								required : msgRequiredGeneric,
+							},
+							telefono : {
+								required : msgRequiredGeneric,
+								phoneNumber: msgPhone,
+							},
+							dpi : {
+								required : msgRequiredGeneric,
+							},
+							genero : {
+								required : msgRequiredGeneric,
+							},
+							fecha_nacimiento : {
+								required : msgRequiredGeneric,
+							},
+							fecha_ingreso : {
+								required : msgRequiredGeneric,
+							},
+							fecha_inicio : {
+								required : msgRequiredGeneric,
+							},
+							puesto : {
+								required : msgRequiredGeneric,
+							},
+							
+							
+						},
+						errorPlacement: function (error, element) {
+							if($(element).is("select")){
+								$(element).parent(".selectBox").addClass("error");
+							}
+							var isInputFile = $(element).is("input[type='file']");
+							if (isInputFile) {
+								$(element).parent(".fancyFiled").addClass("error");
+							}
+							var lastError = $(element).data("lastError"),
+			                newError = $(error).text();
+	
+				            $(element).data("lastError", newError);
+		
+				            if(newError !== "" && newError !== lastError){
+				            	if (isInputFile) {
+				            		$(element).parent(".fancyFiled").tooltipster("content", newError);
+					                $(element).parent(".fancyFiled").tooltipster("enable");
+					                $(element).parent(".fancyFiled").tooltipster("show");
+				            	} else {
+				            		$(element).tooltipster("content", newError);
+					                $(element).tooltipster("enable");
+					                $(element).tooltipster("show");
+				            	}
+				            	
+				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioCreateEmpleado").focus(function(){
+									$(this).tooltipster("show");
+								});
+				                
+				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioCreateEmpleado").blur(function(){
+									$(this).tooltipster("hide");
+								});
+				            }
+				        },
+				        success: function (label, element) {
+				        	var isInputFile = $(element).is("input[type='file']");
+				        	if($(element).is("select")){
+								$(element).parent(".selectBox").removeClass("error");
+								$(element).tooltipster("disable");
+							}
+				        	if (isInputFile) {
+								$(element).parent(".fancyFiled").removeClass("error");
+								$(element).parent(".fancyFiled").tooltipster("hide");
+						        $(element).parent(".fancyFiled").tooltipster("disable");
+							}
+				            $(element).tooltipster("hide");
+				            $(element).tooltipster("disable");
+				        }
+					});
+					
+					
 					
 					
 					$("#guardarPuesto").click(function(){
 						var formulario = $("#formularioPuesto");
+					
+						
+						if($(formulario).valid()){
+							$(formulario).submit();
+						}else{
+							return false;
+						}
+					});
+					
+					$("#guardarEmpleado").click(function(){
+						var formulario = $("#formularioEmpleado");
 					
 						
 						if($(formulario).valid()){

@@ -1,0 +1,61 @@
+package com.umg.programacion2.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="menu")
+public class Menu {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="id")
+	private Long id;
+	@Column(name="label")
+	private String label;
+	@Column(name="path")
+	private String path;
+	@Column(name="padre")
+	private Long padre;
+	@Column(name="favicon")
+	private String favicon;
+	
+	
+	public String getFavicon() {
+		return favicon;
+	}
+	public void setFavicon(String favicon) {
+		this.favicon = favicon;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getLabel() {
+		return label;
+	}
+	public void setLabel(String label) {
+		this.label = label;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
+	}
+	public Long getPadre() {
+		return padre;
+	}
+	public void setPadre(Long padre) {
+		this.padre = padre;
+	}
+	
+	
+	
+}

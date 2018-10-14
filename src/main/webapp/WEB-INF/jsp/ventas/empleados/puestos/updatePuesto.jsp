@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file = "../../include/header.jsp" %>
+<%@ include file = "../../../include/header.jsp" %>
 					<div style="height: 80%" class="row">
                             <div class="col-md-12">
                                  <div class="card">
@@ -8,11 +8,11 @@
                                         <strong>Actualizar</strong> Puesto
                                     </div>
                                     <div class="card-body card-block">
-                                        <form action="addPuesto" method="post" class="" id="formularioPuesto">
+                                        <form action="updatePuesto" method="post" class="" id="formularioPuesto">
                                             <div class="form-group">
                                             	<input type="hidden" id="id" name="id" value="${puesto.idPuesto}" />
                                                 <label for="nombre" class=" form-control-label">Nombre</label>
-                                                <input type="text" id="nombre" name="nombre" placeholder="Nombre del puesto" class="form-control" alue="${puesto.nombre}" required>
+                                                <input type="text" id="nombre" name="nombre" placeholder="Nombre del puesto" class="form-control" value="${puesto.nombre}" required>
                                                 
                                             </div>
                                           
@@ -30,7 +30,7 @@
                             </div>
                         </div>
 
-<%@ include file = "../../include/footer.jsp" %>
+<%@ include file = "../../../include/footer.jsp" %>
 
 
 <script>

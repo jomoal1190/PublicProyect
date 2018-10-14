@@ -11,8 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.umg.programacion2.model.Empleado;
 import com.umg.programacion2.model.Puestos;
+import com.umg.programacion2.repository.EmpleadoRepository;
 import com.umg.programacion2.repository.PuestoRepository;
 import com.umg.programacion2.service.EmpleadoService;
 @Service
@@ -21,7 +22,10 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 	private static Logger logger = LoggerFactory.getLogger(EmpleadoServiceImpl.class);
 	private static final String codigoCorrecto="success";
 	private static final String codigoERROR="error";
+	
+	
 	@Autowired PuestoRepository puestoRepository;
+	@Autowired EmpleadoRepository empleadoRepository;
 	
 	@Override
 	public List<Puestos> getAllPuestos() {
@@ -86,6 +90,40 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 			logger.info("ERROR deletePuesto"+e);
 		}
 		return puesto;
+	}
+
+	@Override
+	public String updatePuesto(HttpServletRequest request, HttpServletResponse response) {
+		String nombre = request.getParameter("nombre");
+		Long id= Long.parseLong(request.getParameter("id"));
+		Puestos puesto = new Puestos();
+		puesto.setNombre(nombre);
+		puesto.setIdPuesto(id);
+		String res;
+		try {
+			puestoRepository.save(puesto);
+			res=codigoCorrecto;
+		}catch(Exception e)
+		{
+			res=codigoERROR;
+			logger.info("Error SavePuesto"+e);	
+		}
+		
+		return res;
+	}
+
+	@Override
+	public List<Empleado> getAllEmpleados() {
+		List<Empleado> puestos = new ArrayList<Empleado>();
+		try {
+			puestos =empleadoRepository.findAll();
+		
+		}catch(Exception e)
+		{
+			puestos = null;
+			logger.info("Error "+e);
+		}
+		return puestos;
 	}
 
 	

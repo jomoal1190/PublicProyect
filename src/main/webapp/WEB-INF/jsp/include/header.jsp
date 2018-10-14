@@ -193,7 +193,7 @@
                                 				<c:set var="continueFor" scope="request" value="true"/>
                                 				<c:forEach items="${children}" var="ch">
                                 					<c:if test="${ch.padre==mh.id}">
-                                					<c:set var="continueExecuting" scope="request" value="false"/>
+                                					<c:set var="continueFor" scope="request" value="false"/>
                                 					<ul class="list-unstyled navbar__sub-list js-sub-list">
                                 					 <li class="has-sub">
 						                    			<a class="js-arrow" href="#">
@@ -219,7 +219,7 @@
                                 					</c:if>
                                 					
                                 				</c:forEach>
-                                				<c:if test="${continueFor == 'false'}">
+                                				<c:if test="${continueFor != false}">
                                 					<a href="${mh.path}">
                                     					<i class="${mh.favicon}"></i>${mh.label}
                                     				</a>

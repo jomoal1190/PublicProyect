@@ -32,6 +32,7 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 		List<Puestos> puestos = new ArrayList<Puestos>();
 		try {
 			puestos =puestoRepository.findAll();
+			
 		
 		}catch(Exception e)
 		{

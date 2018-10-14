@@ -52,7 +52,7 @@ public class EmpleadosController {
 	        return "ventas/empleados/puestos/listPuestos";
 	    }
 	 
-	 @RequestMapping(value="/gestion/puestos/addPuesto", method = RequestMethod.GET)
+	 @RequestMapping(value="/ventas/empleados/puestos/addPuesto", method = RequestMethod.GET)
 	    public String addPuesto(Model model) {
 //		 	SIEMPRE LLAMAR A ESTA FUNCION
 		 	List<Menu> menu = menuService.getAllMenu();

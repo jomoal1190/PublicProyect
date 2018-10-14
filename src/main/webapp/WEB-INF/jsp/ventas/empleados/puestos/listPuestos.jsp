@@ -72,14 +72,14 @@
   				$(document).ready(function() {
                         	
                        	 $('#crear').click(function(){
-                       		 document.location.href = '/gestion/puestos/addPuesto'
+                       		 document.location.href = '/ventas/empleados/puestos/addPuesto'
                     			}); 
                     	}); 
   						
   				function eliminarPuesto(id)
   		     	{
   		     		console.log(id);
-  		     		url="/gestion/puestos/eliminarPuesto"
+  		     		url="/ventas/empleados/puestos/eliminarPuesto"
   		     		 $.ajax({                        
   			    		    type: "POST",                 
   			    		    url: url,                     

@@ -1,6 +1,8 @@
 package com.umg.programacion2.model;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,9 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="empleados")
@@ -44,6 +48,10 @@ public class Empleado {
 	@JsonBackReference
 	@JoinColumn(name="id_puesto")
 	private Puestos puesto;
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="emppleado")
+	@JsonManagedReference
+	Set<Ventas> ventas = new HashSet<Ventas>();
 	
 	
 	public Long getId() {
@@ -112,6 +120,15 @@ public class Empleado {
 	public void setPuesto(Puestos puesto) {
 		this.puesto = puesto;
 	}
+	public Set<Ventas> getVentas() {
+		return ventas;
+	}
+	public void setVentas(Set<Ventas> ventas) {
+		this.ventas = ventas;
+	}
+	
+	
+	
 	
 	
 	

@@ -23,8 +23,20 @@ public class Menu {
 	private Long padre;
 	@Column(name="favicon")
 	private String favicon;
+	@Column(name="prioridad")
+	private Long prioridad;
 	
 	
+	
+	
+	
+	
+	public Long getPrioridad() {
+		return prioridad;
+	}
+	public void setPrioridad(Long prioridad) {
+		this.prioridad = prioridad;
+	}
 	public String getFavicon() {
 		return favicon;
 	}

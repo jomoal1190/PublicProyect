@@ -10,6 +10,8 @@ import com.umg.programacion2.model.Menu;
 
 
 public interface MenuRepository extends CrudRepository<Menu, Long>{
+	
+	@Query("Select m from Menu m order by m.prioridad asc")
 	List<Menu> findAll();
 	
 	@Query("Select m from Menu m where m.padre!=0")

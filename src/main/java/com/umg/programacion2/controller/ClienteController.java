@@ -33,6 +33,7 @@ public class ClienteController {
        
     	model.addAttribute("menu", menu);
     	model.addAttribute("children", menuChildren);
+    	model.addAttribute("pagina", "Clientes");
         return "ventas/clientes/listClientes";
     }
 }

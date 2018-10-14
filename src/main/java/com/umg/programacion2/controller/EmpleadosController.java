@@ -49,6 +49,7 @@ public class EmpleadosController {
 	       
 	    	model.addAttribute("menu", menu);
 	    	model.addAttribute("children", menuChildren);
+	    	model.addAttribute("pagina", "Puestos");
 	        return "ventas/empleados/puestos/listPuestos";
 	    }
 	 
@@ -60,6 +61,7 @@ public class EmpleadosController {
 	       
 	    	model.addAttribute("menu", menu);
 	    	model.addAttribute("children", menuChildren);
+	    	model.addAttribute("pagina", "Puestos");
 	        return "ventas/empleados/puestos/addPuesto";
 	    }
 	 
@@ -75,7 +77,7 @@ public class EmpleadosController {
 	       
 	    	model.addAttribute("menu", menu);
 	    	model.addAttribute("children", menuChildren);
-		 	
+	    	model.addAttribute("pagina", "Puestos");
 	        return "redirect:/ventas/empleados/puestos/listPuestos";
 	    }
 	 
@@ -100,6 +102,7 @@ public class EmpleadosController {
 	       
 	    	model.addAttribute("menu", menu);
 	    	model.addAttribute("children", menuChildren);
+	    	model.addAttribute("pagina", "Puestos");
 	        return "ventas/empleados/puestos/updatePuesto";
 	    }
 	 
@@ -116,6 +119,7 @@ public class EmpleadosController {
 	       
 	    	model.addAttribute("menu", menu);
 	    	model.addAttribute("children", menuChildren);
+	    	model.addAttribute("pagina", "Puestos");
 	        return "redirect:/ventas/empleados/puestos/listPuestos";
 	    }
 	 
@@ -133,6 +137,7 @@ public class EmpleadosController {
 	       
 	    	model.addAttribute("menu", menu);
 	    	model.addAttribute("children", menuChildren);
+	    	model.addAttribute("pagina", "Empleados");
 	        return "ventas/empleados/listEmpleados";
 	    }
 	 
@@ -147,9 +152,69 @@ public class EmpleadosController {
 	       
 	    	model.addAttribute("menu", menu);
 	    	model.addAttribute("children", menuChildren);
+	    	model.addAttribute("pagina", "Empleados");
 	        return "ventas/empleados/addEmpleado";
 	    }
 	 
+	 @RequestMapping(value="/ventas/empleados/addEmpleado", method = RequestMethod.POST)
+	    public String saveEmpleado(HttpServletRequest request, HttpServletResponse response, Model model, RedirectAttributes redirectAttributes) {
+		 	String resp = empleadoService.saveEmpleado(request, response);
+		 	model.addAttribute("codigo", resp);
+		 	
+		 	
+//		 	SIEMPRE LLAMAR A ESTA FUNCION
+		 	List<Menu> menu = menuService.getAllMenu();
+	        List<Menu> menuChildren = menuService.getAllChildren();
+	       
+	    	model.addAttribute("menu", menu);
+	    	model.addAttribute("children", menuChildren);
+	    	model.addAttribute("pagina", "Puestos");
+	        return "redirect:/ventas/empleados/listEmpleados";
+	    }
 	 
+	 
+	 	@RequestMapping(value="/ventas/empleados/updateEmpleado", method = RequestMethod.GET)
+	    public String findEmpleado(HttpServletRequest request, HttpServletResponse response, Model model, RedirectAttributes redirectAttributes) {
+		 	logger.info("LLEGAMOS A UPDATE");
+		 	
+		 	Empleado resp = empleadoService.getEmpleadoId(request, response);
+		 	model.addAttribute("empleado", resp);
+		 	
+		 	List<Puestos> puestos = empleadoService.getAllPuestos();
+		 	model.addAttribute("puestos", puestos);
+		 	
+//		 	SIEMPRE LLAMAR A ESTA FUNCION
+		 	List<Menu> menu = menuService.getAllMenu();
+	        List<Menu> menuChildren = menuService.getAllChildren();
+	       
+	    	model.addAttribute("menu", menu);
+	    	model.addAttribute("children", menuChildren);
+	    	model.addAttribute("pagina", "Puestos");
+	        return "ventas/empleados/updateEmpleado";
+	    }
+	 	
+	 	@RequestMapping(value="/ventas/empleados/updateEmpleado", method = RequestMethod.POST)
+	    public String updateEmpleado(HttpServletRequest request, HttpServletResponse response, Model model, RedirectAttributes redirectAttributes) {
+		 	String resp = empleadoService.updateEmpleado(request, response);
+		 	model.addAttribute("codigo", resp);
+		 	
+		 	
+//		 	SIEMPRE LLAMAR A ESTA FUNCION
+		 	List<Menu> menu = menuService.getAllMenu();
+	        List<Menu> menuChildren = menuService.getAllChildren();
+	       
+	    	model.addAttribute("menu", menu);
+	    	model.addAttribute("children", menuChildren);
+	    	model.addAttribute("pagina", "Puestos");
+	        return "redirect:/ventas/empleados/listEmpleados";
+	    }
+	 	
+	 	@RequestMapping(value="/ventas/empleados/eliminarEmpleado", method = RequestMethod.POST)
+		public @ResponseBody String deleteEmpleado(HttpServletRequest request, HttpServletResponse response,RedirectAttributes redirectAttributes)
+		{
+			String respuesta = empleadoService.deleteEmpleado(request, response);
+			return respuesta;
+			
+		}
 	 
 }

@@ -88,8 +88,8 @@
   			    	           {
   			    		    	if (data=="success")
   			    		    		{
-  			    		    		alert("Empleado eliminado");
-  			    		    		document.location.href = '/gestion/puestos/listPuestos'
+  			    		    		alert("Puesto eliminado");
+  			    		    		document.location.href = '/ventas/empleados/puestos/listPuestos'
   			    		    		}
   			    		    		
   			    	           }

@@ -1,6 +1,9 @@
 package com.umg.programacion2.serviceImpl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -107,7 +110,7 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 		}catch(Exception e)
 		{
 			res=codigoERROR;
-			logger.info("Error SavePuesto"+e);	
+			logger.info("Error Update Empleado"+e);	
 		}
 		
 		return res;
@@ -122,9 +125,169 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 		}catch(Exception e)
 		{
 			puestos = null;
-			logger.info("Error "+e);
+			logger.info("Error getEmpleado "+e);
 		}
 		return puestos;
+	}
+
+	@Override
+	public String saveEmpleado(HttpServletRequest request, HttpServletResponse response) {
+		String nombres = request.getParameter("nombres");
+		String apellidos= request.getParameter("apellidos");
+		String direccion= request.getParameter("direccion");
+		String telefono= request.getParameter("telefono");
+		String dpi= request.getParameter("dpi");
+		String genero= request.getParameter("genero");
+		String fechaNacimiento= request.getParameter("fecha_nacimiento");
+		String fechaIngreso= request.getParameter("fecha_ingreso");
+		String fecha_inicio= request.getParameter("fecha_inicio");
+		String puesto= request.getParameter("puesto");
+		
+		SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+		Boolean gener = Boolean.valueOf(genero);
+		
+//		CONVERTIR STRING A FECHA USAR DATE DE UTIL NO DE SQL
+		
+		Date fechaNac = null;
+		Date fechaIng = null;
+		Date fechaIni = null;
+		try {
+			fechaNac = format.parse(fechaNacimiento);
+			fechaIng = format.parse(fechaIngreso);
+			fechaIni = format.parse(fecha_inicio);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+//		Agregando puesto 
+		Puestos p = new Puestos();
+		p.setIdPuesto(Long.parseLong(puesto));
+		
+//		Guardando todos los parametros en empleado
+		
+		Empleado empleado = new Empleado();
+		empleado.setNombres(nombres);
+		empleado.setApellidos(apellidos);
+		empleado.setDireccion(direccion);
+		empleado.setDpi(dpi);
+		empleado.setFechaIngreso(fechaIng);
+		empleado.setFechaInicio(fechaIni);
+		empleado.setFechaNacimiento(fechaNac);
+		empleado.setPuesto(p);
+		empleado.setGenero(gener);
+		empleado.setTelefono(telefono);
+		
+		String res;
+		try {
+			empleadoRepository.save(empleado);
+			res=codigoCorrecto;
+		}catch(Exception e)
+		{
+			res=codigoERROR;
+			logger.info("Error Save Empleado"+e);	
+		}
+		
+		return res;
+	}
+
+	
+
+	@Override
+	public Empleado getEmpleadoId(HttpServletRequest request, HttpServletResponse response) {
+		Long id= Long.parseLong(request.getParameter("id"));
+		Empleado	 empleado = new Empleado();
+		try {
+			empleado =empleadoRepository.findByIdEmpleado(id);
+			
+		}catch(Exception e)
+		{
+		
+			logger.info("ERROR Get Empleado"+e);
+		}
+		return empleado;
+	}
+
+	@Override
+	public String updateEmpleado(HttpServletRequest request, HttpServletResponse response) {
+		Long id = Long.parseLong(request.getParameter("id"));
+		String nombres = request.getParameter("nombres");
+		String apellidos= request.getParameter("apellidos");
+		String direccion= request.getParameter("direccion");
+		String telefono= request.getParameter("telefono");
+		String dpi= request.getParameter("dpi");
+		String genero= request.getParameter("genero");
+		String fechaNacimiento= request.getParameter("fecha_nacimiento");
+		String fechaIngreso= request.getParameter("fecha_ingreso");
+		String fecha_inicio= request.getParameter("fecha_inicio");
+		String puesto= request.getParameter("puesto");
+		
+		SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+		Boolean gener = Boolean.valueOf(genero);
+		
+//		CONVERTIR STRING A FECHA USAR DATE DE UTIL NO DE SQL
+		
+		Date fechaNac = null;
+		Date fechaIng = null;
+		Date fechaIni = null;
+		try {
+			fechaNac = format.parse(fechaNacimiento);
+			fechaIng = format.parse(fechaIngreso);
+			fechaIni = format.parse(fecha_inicio);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+//		Agregando puesto 
+		Puestos p = new Puestos();
+		p.setIdPuesto(Long.parseLong(puesto));
+		
+//		Guardando todos los parametros en empleado
+		
+		Empleado empleado = new Empleado();
+		empleado.setId(id);
+		empleado.setNombres(nombres);
+		empleado.setApellidos(apellidos);
+		empleado.setDireccion(direccion);
+		empleado.setDpi(dpi);
+		empleado.setFechaIngreso(fechaIng);
+		empleado.setFechaInicio(fechaIni);
+		empleado.setFechaNacimiento(fechaNac);
+		empleado.setPuesto(p);
+		empleado.setGenero(gener);
+		empleado.setTelefono(telefono);
+		
+		String res;
+		try {
+			empleadoRepository.save(empleado);
+			res=codigoCorrecto;
+		}catch(Exception e)
+		{
+			res=codigoERROR;
+			logger.info("Error Update Empleado"+e);	
+		}
+		
+		return res;
+	}
+
+	@Override
+	public String deleteEmpleado(HttpServletRequest request, HttpServletResponse response) {
+		Long id= Long.parseLong(request.getParameter("id"));
+		Empleado empleado = new Empleado();
+		empleado.setId(id);
+		String respuesta="";
+		try {
+			empleadoRepository.delete(empleado);
+			respuesta =codigoCorrecto;
+		}catch(Exception e)
+		{
+			respuesta = codigoERROR;
+			logger.info("ERROR delete Empleado"+e);
+		}
+		return respuesta;
 	}
 
 	

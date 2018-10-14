@@ -18,4 +18,8 @@ public interface EmpleadoService {
 	
 	
 	public List<Empleado> getAllEmpleados();
+	public String saveEmpleado(HttpServletRequest request, HttpServletResponse response);
+	public Empleado getEmpleadoId(HttpServletRequest request, HttpServletResponse response);
+	public String updateEmpleado(HttpServletRequest request, HttpServletResponse response);
+	public String deleteEmpleado(HttpServletRequest request, HttpServletResponse response);
 }

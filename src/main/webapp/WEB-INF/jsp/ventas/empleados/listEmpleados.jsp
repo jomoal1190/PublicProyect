@@ -21,10 +21,16 @@
                                     <table class="table table-data2">
                                         <thead>
                                             <tr>
-                                              
+                                              	<th>Id</th>
                                                 <th>Nombres</th>
                                                 <th>Apellidos</th>
                                                 <th>Telefono</th>
+                                                <th>Direccion</th>
+                                                <th>dpi</th>
+                                                <th>Genero</th>
+                                                <th>Fecha Nacimiento</th>
+                                                <th>Fecha Inicio de labores</th>
+                                                <th>Fecha de Ingreso</th>
                                                 <th>Puesto</th>
                                                 
                                                
@@ -35,6 +41,14 @@
                                         
                                         	<c:forEach items="${empleados}" var="e">
     										<tr class="tr-shadow">
+    											 <td>
+                                                    <c:if test="${e.id < 10}">
+                                                    E-00${e.id}
+                                                    </c:if>
+                                                    <c:if test="${e.id < 100 && e.id>9}">
+                                                    E-0${e.id}
+                                                    </c:if>
+                                                </td>
                                                 <td>
                                                     ${e.nombres}
                                                 </td>
@@ -45,8 +59,32 @@
                                                     ${e.telefono}
                                                 </td>
                                                 <td>
+                                                    ${e.direccion}
+                                                </td>
+                                                <td>
+                                                    ${e.dpi}
+                                                </td>
+                                                <td>
+                                                	<c:if test="${e.genero == true}">
+                                                 	Hombre
+                                                 	</c:if>
+                                                 	<c:if test="${e.genero == false}">
+                                                 	Mujer
+                                                 	</c:if>
+                                                </td>
+                                                <td>
+                                                    <fmt:formatDate value='${e.fechaNacimiento}' pattern='dd/MM/yyyy' />
+                                                </td>
+                                                <td>
+                                                    <fmt:formatDate value='${e.fechaInicio}' pattern='dd/MM/yyyy' />
+                                                </td>
+                                                <td>
+                                                    <fmt:formatDate value='${e.fechaIngreso}' pattern='dd/MM/yyyy' />
+                                                </td>
+                                                <td>
                                                     ${e.puesto.nombre}
                                                 </td>
+                                                
                                                
                                                 <td>
                                                     <div class="table-data-feature">
@@ -90,7 +128,7 @@
   				function eliminarEmpleado(id)
   		     	{
   		     		console.log(id);
-  		     		url="/gestion/puestos/eliminarEmpleado"
+  		     		url="/ventas/empleados/eliminarEmpleado"
   		     		 $.ajax({                        
   			    		    type: "POST",                 
   			    		    url: url,                     
@@ -100,7 +138,7 @@
   			    		    	if (data=="success")
   			    		    		{
   			    		    		alert("Empleado eliminado");
-  			    		    		document.location.href = '/gestion/puestos/listPuestos'
+  			    		    		document.location.href = '/ventas/empleados/listEmpleados'
   			    		    		}
   			    		    		
   			    	           }

@@ -56,10 +56,10 @@
                                                     ${c.nit}
                                                 </td>
                                                  <td>
-                                                 	<c:if test="c.genero == 1">
+                                                 	<c:if test="${e.genero == true}">
                                                  	Hombre
                                                  	</c:if>
-                                                 	<c:if test="c.genero == 0">
+                                                 	<c:if test="${e.genero == false}">
                                                  	Mujer
                                                  	</c:if>
                                                     

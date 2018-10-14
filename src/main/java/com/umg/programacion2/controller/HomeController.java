@@ -29,6 +29,7 @@ public class HomeController {
        
     	model.addAttribute("menu", menu);
     	model.addAttribute("children", menuChildren);
+    	model.addAttribute("pagina", "Home");
         return "home";
     }
     

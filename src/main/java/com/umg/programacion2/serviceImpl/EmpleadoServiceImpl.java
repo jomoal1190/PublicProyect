@@ -142,9 +142,15 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 		String fechaIngreso= request.getParameter("fecha_ingreso");
 		String fecha_inicio= request.getParameter("fecha_inicio");
 		String puesto= request.getParameter("puesto");
+		Boolean gener = false;
+		if (genero.equals("1"))
+		{
+			gener = true;
+		}
+		logger.info("genero "+genero);
 		
 		SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-		Boolean gener = Boolean.valueOf(genero);
+		
 		
 //		CONVERTIR STRING A FECHA USAR DATE DE UTIL NO DE SQL
 		
@@ -224,7 +230,11 @@ public class EmpleadoServiceImpl implements EmpleadoService{
 		String puesto= request.getParameter("puesto");
 		
 		SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-		Boolean gener = Boolean.valueOf(genero);
+		Boolean gener = false;
+		if (genero.equals("1"))
+		{
+			gener = true;
+		}
 		
 //		CONVERTIR STRING A FECHA USAR DATE DE UTIL NO DE SQL
 		

@@ -117,7 +117,7 @@ $(document).ready(function() {
 	
 	
 	 $('#regresar').click(function(){
-		 document.location.href = '/ventas/empleados/listEmpleados'
+		 document.location.href = '${pageContext.request.contextPath}/ventas/empleados/listEmpleados'
 		}); 
 
 	});

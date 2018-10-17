@@ -65,7 +65,7 @@
                             <div class="register-link">
                                 <p>
                                     No tienes cuenta?
-                                    <a href="/registro">Registrate</a>
+                                    <a href="registro">Registrate</a>
                                 </p>
                             </div>
                         </div>

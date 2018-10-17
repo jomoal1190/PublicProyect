@@ -7,10 +7,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @ComponentScan
 @SpringBootApplication
+@EnableJpaRepositories("com.umg.programacion2.repository")
 public class Programacion2Application extends SpringBootServletInitializer{
 
 	@Override

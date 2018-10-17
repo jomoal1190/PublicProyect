@@ -59,24 +59,40 @@ public class LoginController {
         }
     }
 
+//    @RequestMapping(value="/home", method = RequestMethod.GET)
+//    public ModelAndView home(){
+//        ModelAndView modelAndView = new ModelAndView();
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        User user = userService.findUserByEmail(auth.getName());
+//        List<Menu> menu = menuService.getAllMenu();
+//        List<Menu> menuChildren = menuService.getAllChildren();
+//     
+//        modelAndView.addObject("menu", menu);
+//        modelAndView.addObject("children", menuChildren);
+//        modelAndView.addObject("pagina", "Home");
+//        
+//        modelAndView.addObject("userName", "Bienvenido " + user.getName() + " " + user.getLastName());
+//        modelAndView.addObject("adminMessage","Contendio habil para clientes");
+//        modelAndView.addObject("emailUser",user.getEmail());
+//        modelAndView.setViewName("home");
+//        return modelAndView;
+//    }
+
+    
     @RequestMapping(value="/home", method = RequestMethod.GET)
-    public ModelAndView home(){
-        ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByEmail(auth.getName());
+    public String home(Model model) {
+    	 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+         User user = userService.findUserByEmail(auth.getName());
+    	
         List<Menu> menu = menuService.getAllMenu();
         List<Menu> menuChildren = menuService.getAllChildren();
-     
-        modelAndView.addObject("menu", menu);
-        modelAndView.addObject("children", menuChildren);
-        modelAndView.addObject("pagina", "Home");
-        
-        modelAndView.addObject("userName", "Bienvenido " + user.getName() + " " + user.getLastName());
-        modelAndView.addObject("adminMessage","Contendio habil para clientes");
-        modelAndView.addObject("emailUser",user.getEmail());
-        modelAndView.setViewName("home");
-        return modelAndView;
+       
+    	model.addAttribute("menu", menu);
+    	model.addAttribute("children", menuChildren);
+    	model.addAttribute("pagina", "Home");
+    	model.addAttribute("userName","Bienvenido " + user.getName() + " " + user.getLastName());
+    	model.addAttribute("emailUser",user.getEmail());
+        return "home";
     }
-
 
 }

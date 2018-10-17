@@ -2,6 +2,7 @@ package com.umg.programacion2.model;
 
 import java.util.Set;
 
+
 import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

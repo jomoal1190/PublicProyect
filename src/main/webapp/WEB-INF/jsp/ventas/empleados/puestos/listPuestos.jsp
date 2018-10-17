@@ -72,14 +72,14 @@
   				$(document).ready(function() {
                         	
                        	 $('#crear').click(function(){
-                       		 document.location.href = '/ventas/empleados/puestos/addPuesto'
+                       		 document.location.href = 'addPuesto'
                     			}); 
                     	}); 
   						
   				function eliminarPuesto(id)
   		     	{
   		     		console.log(id);
-  		     		url="/ventas/empleados/puestos/eliminarPuesto"
+  		     		url="eliminarPuesto"
   		     		 $.ajax({                        
   			    		    type: "POST",                 
   			    		    url: url,                     
@@ -89,7 +89,7 @@
   			    		    	if (data=="success")
   			    		    		{
   			    		    		alert("Puesto eliminado");
-  			    		    		document.location.href = '/ventas/empleados/puestos/listPuestos'
+  			    		    		document.location.href = 'listPuestos'
   			    		    		}
   			    		    		
   			    	           }

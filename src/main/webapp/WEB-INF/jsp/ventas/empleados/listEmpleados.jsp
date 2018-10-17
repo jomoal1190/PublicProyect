@@ -121,14 +121,14 @@
   				$(document).ready(function() {
                         	
                        	 $('#crear').click(function(){
-                       		 document.location.href = '/ventas/empleados/addEmpleado'
+                       		 document.location.href = 'addEmpleado'
                     			}); 
                     	}); 
   						
   				function eliminarEmpleado(id)
   		     	{
   		     		console.log(id);
-  		     		url="/ventas/empleados/eliminarEmpleado"
+  		     		url="eliminarEmpleado"
   		     		 $.ajax({                        
   			    		    type: "POST",                 
   			    		    url: url,                     
@@ -138,7 +138,7 @@
   			    		    	if (data=="success")
   			    		    		{
   			    		    		alert("Empleado eliminado");
-  			    		    		document.location.href = '/ventas/empleados/listEmpleados'
+  			    		    		document.location.href = 'listEmpleados'
   			    		    		}
   			    		    		
   			    	           }

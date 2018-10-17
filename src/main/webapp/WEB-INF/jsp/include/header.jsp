@@ -165,7 +165,7 @@
                                 <i class="${m.favicon}"></i>${m.label}</a>
                                			<ul class="list-unstyled navbar__sub-list js-sub-list">
                                 			<li>
-                                    			<a href="${m.path}">
+                                    			<a href="${pageContext.request.contextPath}${m.path}">
                                     				<i class="${m.favicon}"></i>${m.label}
                                     			</a>
                                 			</li>
@@ -184,7 +184,7 @@
 						                                <i class="${mh.favicon}"></i>${mh.label}</a>
 						                                	<ul class="list-unstyled navbar__sub-list js-sub-list">
 					                                			<li>
-					                                    			<a href="${mh.path}">
+					                                    			<a href="${pageContext.request.contextPath}${mh.path}">
 					                                    				<i class="${mh.favicon}"></i>${mh.label}
 					                                    			</a>
 					                                			</li>

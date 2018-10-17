@@ -12,9 +12,9 @@
 
     <!-- Jquery JS-->
     <base href="${pageContext.request.contextPath}">
-    <script src="<c:url value="vendor/jquery-3.2.1.min.js" />"></script>
+    <script src="<c:url value="/vendor/jquery-3.2.1.min.js" />"></script>
     <!-- Bootstrap JS-->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="/cssvendor/bootstrap-4.1/popper.min.js"></script>
     <script src="../../../vendor/bootstrap-4.1/bootstrap.min.js"></script>
     <!-- Vendor JS       -->
     <script src="../../../vendor/slick/slick.min.js">

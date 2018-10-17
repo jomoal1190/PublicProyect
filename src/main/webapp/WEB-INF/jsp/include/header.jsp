@@ -152,6 +152,11 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
+                    <li>
+                       <a href="/home">
+                          <i class="fas fa-home"></i>Home
+                             </a>
+                    </li>
                     	<c:forEach items="${menu}" var="m">
                     		<c:if test = "${m.padre == 0}">
                     		

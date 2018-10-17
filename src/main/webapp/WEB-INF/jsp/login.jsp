@@ -59,7 +59,7 @@
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Contraseña">
                                 </div>
                                 <br>
-                                <button id="botonInicio" class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Iniciar Sesión</button>
+                                <button id="guardar" class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Iniciar Sesión</button>
                                 <div id="errorUser" style="display:none;text-align: center;color: red;" ><span>Error en usuario o contraseña</span></div>
                             </form>
                             <div class="register-link">

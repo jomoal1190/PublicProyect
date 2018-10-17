@@ -143,7 +143,7 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="/home">
+                <a href="home">
                <img src="../../../images/icon/umg.png" alt="Programacion 2" style="max-width: 30% !important;"/>
                Programación 2
                 </a>

@@ -11,7 +11,7 @@
     </div>
 
     <!-- Jquery JS-->
-    >
+    
     <script src="${pageContext.request.contextPath}/vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
     <script src="${pageContext.request.contextPath}/vendor/bootstrap-4.1/popper.min.js"></script>

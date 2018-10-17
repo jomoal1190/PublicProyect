@@ -153,7 +153,7 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                     <li>
-                       <a href="/home">
+                       <a href="${pageContext.request.contextPath}/home">
                           <i class="fas fa-home"></i>Home
                              </a>
                     </li>
@@ -191,7 +191,7 @@
 					                                		</ul>
 						                                	<ul class="list-unstyled navbar__sub-list js-sub-list">
 					                                			<li>
-					                                    			<a href="${ch.path}">
+					                                    			<a href="${pageContext.request.contextPath}${ch.path}">
 					                                    				<i class="${ch.favicon}"></i>${ch.label}
 					                                    			</a>
 					                                			</li>

@@ -4,7 +4,7 @@ jQuery(function($){
 					
 					var msgRequiredGeneric = "Este campo es requerido";
 					var msgMaxlength = "Cantidad de caracteres no permitidos";
-					var msgRequiredEmail = "Debe ingresar un correo";
+					var msgRequiredEmail = "Debe ingresar un correo válido";
 					var msgRequiredNumber = "Deben ser numeros";
 					var msgAccept = "Formato de archivo no válido";
 					var msgPhone = "Número de teléfono no válido";
@@ -12,12 +12,17 @@ jQuery(function($){
 					var msgMinlengthNumber = $.validator.format("Ingrese al menos {0} números");
 					var msgNumber = "Número no válido";
 					var msgFecha = "La fecha debe final ser mayor a la inicial"
+					var msgPassword = "Las contraseñas deben ser iguales";
 					
+//		======================= ALERTAS FORMULARIO PUESTO ============================================
+						
 					$("input[name], select[name], span.fancyFiled", "#formularioPuesto").tooltipster({ 
 						trigger: 'custom', // default is 'hover' which is no good here
 						onlyOne: false,    // allow multiple tips to be open at a time
 						position: 'right'  // display the tips to the right of the element
 				    });
+					
+//		======================= ALERTAS FORMULARIO EMPLEADO ============================================
 					
 					$("input[name], select[name], span.fancyFiled", "#formularioEmpleado").tooltipster({ 
 						trigger: 'custom', // default is 'hover' which is no good here
@@ -25,6 +30,22 @@ jQuery(function($){
 						position: 'right'  // display the tips to the right of the element
 				    });
 					
+//		======================= ALERTAS FORMULARIO USUARIO ============================================
+					
+					$("input[name], select[name], span.fancyFiled", "#registroUsuario").tooltipster({ 
+						trigger: 'custom', // default is 'hover' which is no good here
+						onlyOne: false,    // allow multiple tips to be open at a time
+						position: 'right'  // display the tips to the right of the element
+				    });
+					
+					
+//		======================= ALERTAS FORMULARIO LOGIN ============================================
+					
+					$("input[name], select[name], span.fancyFiled", "#loginForm").tooltipster({ 
+						trigger: 'custom', // default is 'hover' which is no good here
+						onlyOne: false,    // allow multiple tips to be open at a time
+						position: 'right'  // display the tips to the right of the element
+				    });
 					
 					
 					
@@ -36,7 +57,101 @@ jQuery(function($){
 					    return this.optional(element) || $(element).val() >= $(params).val();
 					});
 					
+//	======================= VALIDACIONES FORMULARIO USUARIO ============================================
 					
+					$("#registroUsuario").validate({
+						rules : {
+							name : {
+								required : true,
+							},
+							lastName : {
+								required : true,
+							},
+							email : {
+								required : true,
+								email: true
+							},
+							password : {
+								required : true,
+							},
+							password2 : {
+								required : true,
+								equalTo: "#password"
+							},
+							
+						},
+						messages : {
+							name : {
+								required : msgRequiredGeneric,
+							},
+							lastName : {
+								required : msgRequiredGeneric,
+							},
+							email : {
+								required : msgRequiredGeneric,
+								email: msgRequiredEmail
+							},
+							password : {
+								required : msgRequiredGeneric,
+							},
+							password2 : {
+								required : msgRequiredGeneric,
+								equalTo: msgPassword
+							},
+							
+							
+						},
+						errorPlacement: function (error, element) {
+							if($(element).is("select")){
+								$(element).parent(".selectBox").addClass("error");
+							}
+							var isInputFile = $(element).is("input[type='file']");
+							if (isInputFile) {
+								$(element).parent(".fancyFiled").addClass("error");
+							}
+							var lastError = $(element).data("lastError"),
+			                newError = $(error).text();
+	
+				            $(element).data("lastError", newError);
+		
+				            if(newError !== "" && newError !== lastError){
+				            	if (isInputFile) {
+				            		$(element).parent(".fancyFiled").tooltipster("content", newError);
+					                $(element).parent(".fancyFiled").tooltipster("enable");
+					                $(element).parent(".fancyFiled").tooltipster("show");
+				            	} else {
+				            		$(element).tooltipster("content", newError);
+					                $(element).tooltipster("enable");
+					                $(element).tooltipster("show");
+				            	}
+				            	
+				                $("input[name].error, select[name].error, span.fancyFiled", "#registroUsuario").focus(function(){
+									$(this).tooltipster("show");
+								});
+				                
+				                $("input[name].error, select[name].error, span.fancyFiled", "#registroUsuario").blur(function(){
+									$(this).tooltipster("hide");
+								});
+				            }
+				        },
+				        success: function (label, element) {
+				        	var isInputFile = $(element).is("input[type='file']");
+				        	if($(element).is("select")){
+								$(element).parent(".selectBox").removeClass("error");
+								$(element).tooltipster("disable");
+							}
+				        	if (isInputFile) {
+								$(element).parent(".fancyFiled").removeClass("error");
+								$(element).parent(".fancyFiled").tooltipster("hide");
+						        $(element).parent(".fancyFiled").tooltipster("disable");
+							}
+				            $(element).tooltipster("hide");
+				            $(element).tooltipster("disable");
+				        }
+					});
+					
+					
+//	======================= VALIDACIONES FORMULARIO PUESTO ============================================					
 					
 					$("#formularioPuesto").validate({
 						rules : {
@@ -76,11 +191,11 @@ jQuery(function($){
 					                $(element).tooltipster("show");
 				            	}
 				            	
-				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioCreateEmpleado").focus(function(){
+				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioPuesto").focus(function(){
 									$(this).tooltipster("show");
 								});
 				                
-				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioCreateEmpleado").blur(function(){
+				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioPuesto").blur(function(){
 									$(this).tooltipster("hide");
 								});
 				            }
@@ -102,8 +217,82 @@ jQuery(function($){
 					});
 					
 					
+//	======================= VALIDACIONES FORMULARIO LOGIN ============================================					
 					
-//					VALIDACION DE EMPLEADO
+					$("#loginForm").validate({
+						rules : {
+							email : {
+								required : true,
+								email: true,
+							},
+							password : {
+								required : true,
+							},
+							
+						},
+						messages : {
+							email : {
+								required : msgRequiredGeneric,
+								email: msgRequiredEmail
+							},
+							password : {
+								required : msgRequiredGeneric,
+							},
+							
+							
+						},
+						errorPlacement: function (error, element) {
+							if($(element).is("select")){
+								$(element).parent(".selectBox").addClass("error");
+							}
+							var isInputFile = $(element).is("input[type='file']");
+							if (isInputFile) {
+								$(element).parent(".fancyFiled").addClass("error");
+							}
+							var lastError = $(element).data("lastError"),
+			                newError = $(error).text();
+	
+				            $(element).data("lastError", newError);
+		
+				            if(newError !== "" && newError !== lastError){
+				            	if (isInputFile) {
+				            		$(element).parent(".fancyFiled").tooltipster("content", newError);
+					                $(element).parent(".fancyFiled").tooltipster("enable");
+					                $(element).parent(".fancyFiled").tooltipster("show");
+				            	} else {
+				            		$(element).tooltipster("content", newError);
+					                $(element).tooltipster("enable");
+					                $(element).tooltipster("show");
+				            	}
+				            	
+				                $("input[name].error, select[name].error, span.fancyFiled", "#loginForm").focus(function(){
+									$(this).tooltipster("show");
+								});
+				                
+				                $("input[name].error, select[name].error, span.fancyFiled", "#loginForm").blur(function(){
+									$(this).tooltipster("hide");
+								});
+				            }
+				        },
+				        success: function (label, element) {
+				        	var isInputFile = $(element).is("input[type='file']");
+				        	if($(element).is("select")){
+								$(element).parent(".selectBox").removeClass("error");
+								$(element).tooltipster("disable");
+							}
+				        	if (isInputFile) {
+								$(element).parent(".fancyFiled").removeClass("error");
+								$(element).parent(".fancyFiled").tooltipster("hide");
+						        $(element).parent(".fancyFiled").tooltipster("disable");
+							}
+				            $(element).tooltipster("hide");
+				            $(element).tooltipster("disable");
+				        }
+					});
+					
+//			======================= VALIDACIONES FORMULARIO EMPLEADO ============================================
+					
+					
 					$("#formularioEmpleado").validate({
 						rules : {
 							nombres : {
@@ -199,11 +388,11 @@ jQuery(function($){
 					                $(element).tooltipster("show");
 				            	}
 				            	
-				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioCreateEmpleado").focus(function(){
+				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioEmpleado").focus(function(){
 									$(this).tooltipster("show");
 								});
 				                
-				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioCreateEmpleado").blur(function(){
+				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioEmpleado").blur(function(){
 									$(this).tooltipster("hide");
 								});
 				            }
@@ -225,12 +414,10 @@ jQuery(function($){
 					});
 					
 					
-					
+//		================= GUARDAR PUESTO =================== CLICK BOTON ===================			
 					
 					$("#guardarPuesto").click(function(){
 						var formulario = $("#formularioPuesto");
-					
-						
 						if($(formulario).valid()){
 							$(formulario).submit();
 						}else{
@@ -238,10 +425,22 @@ jQuery(function($){
 						}
 					});
 					
+					
+//		================= GUARDAR EMPLEADO =================== CLICK BOTON ===================		
+					
 					$("#guardarEmpleado").click(function(){
 						var formulario = $("#formularioEmpleado");
+						if($(formulario).valid()){
+							$(formulario).submit();
+						}else{
+							return false;
+						}
+					});
 					
-						
+//	   ================= GUARDAR Usuario =================== CLICK BOTON ===================		
+					
+					$("#guardarUsuario").click(function(){
+						var formulario = $("#registroUsuario");
 						if($(formulario).valid()){
 							$(formulario).submit();
 						}else{
@@ -251,6 +450,20 @@ jQuery(function($){
 					
 					
 				});
+				
+//		   ================= GUARDAR lOGIN =================== CLICK BOTON ===================		
+				
+				$("#botonInicio").click(function(){
+					var formulario = $("#loginForm");
+					if($(formulario).valid()){
+						$(formulario).submit();
+					}else{
+						return false;
+					}
+				});
+				
+				
+			});
 		
 	});
 });

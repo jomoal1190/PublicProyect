@@ -10,9 +10,9 @@
     <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
-	<link rel="icon" href="images/icon/umg.png">
+
     <!-- Title Page-->
-    <title>Login</title>
+    <title>Register</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -40,7 +40,7 @@
 <body class="animsition">
     <div class="page-wrapper">
         <div class="page-content--bge5">
-            <div class="container" style="max-width: 100%;">
+            <div class="container">
                 <div class="login-wrap">
                     <div class="login-content">
                         <div class="login-logo">
@@ -49,23 +49,35 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="login" method="post" id="loginForm">
+                            <form action="registro" method="post" id="registroUsuario">
                                 <div class="form-group">
-                                    <label>Correo Electrònico</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="usuario@demo.com">
+                                    <label>Nombres</label>
+                                    <input class="au-input au-input--full" type="text" name="name" >
+                                </div>
+                                <div class="form-group">
+                                    <label>Apellidos</label>
+                                    <input class="au-input au-input--full" type="text" name="lastName" >
+                                </div>
+                                <div class="form-group">
+                                    <label>Correo Electrónico</label>
+                                    <input class="au-input au-input--full" type="email" name="email" placeholder="demo@correo.com">
                                 </div>
                                 <div class="form-group">
                                     <label>Contraseña</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Contraseña">
+                                    <input class="au-input au-input--full" type="password" name="password" >
+                                </div>
+                                 <div class="form-group">
+                                    <label>Confirmar contraseña</label>
+                                    <input class="au-input au-input--full" type="password" name="password2">
                                 </div>
                                 <br>
-                                <button id="botonInicio" class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Iniciar Sesión</button>
-                                <div id="errorUser" style="display:none;text-align: center;color: red;" ><span>Error en usuario o contraseña</span></div>
+                                <button id="guardarUsuario" class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
+                               
                             </form>
                             <div class="register-link">
                                 <p>
-                                    No tienes cuenta?
-                                    <a href="/registro">Registrate</a>
+                                    Ya tienes cuenta?
+                                    <a href="/login">Inicia Sesión</a>
                                 </p>
                             </div>
                         </div>
@@ -99,27 +111,12 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+    
+    
 
 </body>
 
-<script>
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
 
-$(document).ready(function() {
-	var error =getParameterByName('error');
-	console.log("Aqui estamos "+typeof(error));
-	
-	if (error)
-		{
-		$('#errorUser').show();
-		}
-});
 
-</script>
 </html>
 <!-- end document-->

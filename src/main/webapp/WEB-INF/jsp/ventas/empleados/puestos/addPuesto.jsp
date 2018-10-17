@@ -37,7 +37,7 @@ $(document).ready(function() {
 	
 	
 	 $('#regresar').click(function(){
-		 document.location.href = '/ventas/empleados/puestos/listPuestos'
+		 document.location.href = 'listPuestos'
 		}); 
 
 	});

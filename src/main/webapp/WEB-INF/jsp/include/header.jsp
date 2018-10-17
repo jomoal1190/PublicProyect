@@ -76,7 +76,7 @@
                                 <i class="${m.favicon}"></i>${m.label}</a>
                                			<ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 			<li>
-                                    			<a href="${m.path}">
+                                    			<a href="${pageContext.request.contextPath}${m.path}">
                                     				<i class="${m.favicon}"></i>${m.label}
                                     			</a>
                                 			</li>
@@ -95,14 +95,14 @@
 <%-- 						                                <i class="${mh.favicon}"></i>${mh.label}</a> --%>
 						                                	<ul >
 					                                			<li>
-					                                    			<a href="${mh.path}">
+					                                    			<a href="${pageContext.request.contextPath}${mh.path}">
 					                                    				<i class="${mh.favicon}"></i>${mh.label}
 					                                    			</a>
 					                                			</li>
 					                                		</ul>
 						                                	<ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
 					                                			<li>
-					                                    			<a href="${ch.path}">
+					                                    			<a href="${pageContext.request.contextPath}${ch.path}">
 					                                    				<i class="${ch.favicon}"></i>${ch.label}
 					                                    			</a>
 					                                			</li>
@@ -115,7 +115,7 @@
                                 					
                                 				</c:forEach>
                                 				<c:if test="${continueFor != false}">
-                                					<a href="${mh.path}">
+                                					<a href="${pageContext.request.contextPath}${mh.path}">
                                     					<i class="${mh.favicon}"></i>${mh.label}
                                     				</a>
                                 				</c:if>
@@ -204,7 +204,7 @@
                                 					
                                 				</c:forEach>
                                 				<c:if test="${continueFor != false}">
-                                					<a href="${mh.path}">
+                                					<a href="${pageContext.request.contextPath}${mh.path}">
                                     					<i class="${mh.favicon}"></i>${mh.label}
                                     				</a>
                                 				</c:if>
@@ -272,7 +272,7 @@
                                                 
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="/logout">
+                                                <a href="${pageContext.request.contextPath}/logout">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>

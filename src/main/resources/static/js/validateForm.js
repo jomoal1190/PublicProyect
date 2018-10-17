@@ -1,5 +1,5 @@
 jQuery(function($){
-	$.getScript("/js/jquery.validate.min.js",function(){
+//	$.getScript("/js/jquery.validate.min.js",function(){
 				$(document).ready(function(){
 					
 					var msgRequiredGeneric = "Este campo es requerido";
@@ -262,6 +262,6 @@ jQuery(function($){
 				
 				
 				
-		});
+//		});
 	});
 });

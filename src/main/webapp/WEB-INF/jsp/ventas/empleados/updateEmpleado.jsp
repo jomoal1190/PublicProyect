@@ -105,7 +105,8 @@ $(document).ready(function() {
 	var puesto ="${empleado.puesto.idPuesto}";
 	$('#puesto option[value="'+puesto+'"]').attr("selected", "selected");
 	var genero ="${empleado.genero}";
-	if (genero == 1)
+	console.log(genero);
+	if (genero == 'false')
 		{
 		$("#genero1").prop("checked", true);
 		}

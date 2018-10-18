@@ -47,6 +47,14 @@ jQuery(function($){
 						position: 'right'  // display the tips to the right of the element
 				    });
 					
+//		======================= ALERTAS FORMULARIO CAMBIO CONTRA ============================================
+					
+					$("input[name], select[name], span.fancyFiled", "#cambioContra").tooltipster({ 
+						trigger: 'custom', // default is 'hover' which is no good here
+						onlyOne: false,    // allow multiple tips to be open at a time
+						position: 'right'  // display the tips to the right of the element
+				    });
+					
 					
 					$.validator.addMethod("phoneNumber", function(value, element){
 						return this.optional(element) || /^[0-9]{4,4}-[0-9]{4,4}$/.test(value);
@@ -464,6 +472,17 @@ jQuery(function($){
 						}
 					});
 				
+//					   ================= GUARDAR lOGIN =================== CLICK BOTON ===================		
+					
+					$("#cambiarContraseña").click(function(){
+						var formulario = $("#cambioContra");
+						if($(formulario).valid()){
+							$(formulario).submit();
+						}else{
+							return false;
+						}
+					});
+					
 				
 //		});
 	});

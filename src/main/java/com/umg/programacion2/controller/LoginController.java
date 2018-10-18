@@ -78,4 +78,18 @@ public class LoginController {
         return "home";
     }
 
+    @RequestMapping(value="/cuenta", method = RequestMethod.GET)
+    public String cambiocontra(Model model) {
+    	 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+         User user = userService.findUserByEmail(auth.getName());
+    	
+//        simpre incluir este metodo
+         
+        model.addAttribute("user", user); 
+        model = menuService.getAllParameter(model);
+    	model.addAttribute("pagina", "Home");
+    	
+        return "cuenta";
+    }
+
 }

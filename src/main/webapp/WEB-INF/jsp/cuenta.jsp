@@ -10,7 +10,19 @@
                                     </div>
                                     <div class="card-body card-block">
                                         <form action="cambioContra" method="post" class="" id="cambioContra">
-                                            <input name="idEmpleado" value="${id}" type="hidden" />
+                                            <input name="idEmpleado" value="${user.id}" type="hidden" />
+                                             <div class="form-group">
+			                                    <label>Nombres</label>
+			                                    <input class="au-input au-input--full" type="text" name="name"  value="${user.name}">
+			                                </div>
+			                                <div class="form-group">
+			                                    <label>Apellidos</label>
+			                                    <input class="au-input au-input--full" type="text" name="lastName" value="${user.lastName}">
+			                                </div>
+			                                <div class="form-group">
+			                                    <label>Correo Electrónico</label>
+			                                    <input class="au-input au-input--full" type="email" name="email" placeholder="demo@correo.com" value="${user.email}">
+			                                </div>
                                             <div class="form-group">
                                                 <label for="antigua" class=" form-control-label">Antigua Contraseña</label>
                                                 <input type="password" id="antigua" name="antigua" placeholder="Antigua Contraseña" class="form-control" required>
@@ -33,9 +45,7 @@
                                         <button id="cambiarContraseña" type="submit" class="btn btn-primary btn-sm">
                                             <i class="fa fa-dot-circle-o"></i> Guardar
                                         </button>
-                                        <button id="regresar" type="reset" class="btn btn-danger btn-sm">
-                                            <i class="fa fa-ban"></i> Regresar
-                                        </button>
+                                        
                                     </div>
                                 </div>
                             </div>

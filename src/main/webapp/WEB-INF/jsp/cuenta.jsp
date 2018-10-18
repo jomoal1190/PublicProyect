@@ -6,7 +6,7 @@
                             <div class="col-md-12">
                                  <div class="card">
                                     <div class="card-header">
-                                        <strong>Cambio </strong> contraseña
+                                        <strong>Información </strong> Cuenta
                                     </div>
                                     <div class="card-body card-block">
                                         <form action="cambioContra" method="post" class="" id="cambioContra">

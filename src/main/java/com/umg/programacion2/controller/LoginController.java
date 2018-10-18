@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -88,6 +89,13 @@ public class LoginController {
         model.addAttribute("user", user); 
         model = menuService.getAllParameter(model);
     	model.addAttribute("pagina", "Home");
+    	
+        return "cuenta";
+    }
+    
+    @RequestMapping(value="/validarContra", method = RequestMethod.POST)
+    @ResponseBody public String validarContra(HttpServletRequest request, HttpServletResponse response) {
+    	 
     	
         return "cuenta";
     }

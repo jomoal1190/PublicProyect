@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Contraseña</label>
-                                    <input class="au-input au-input--full" type="password" name="password" >
+                                    <input class="au-input au-input--full" type="password" name="password" id="password" >
                                 </div>
                                  <div class="form-group">
                                     <label>Confirmar contraseña</label>

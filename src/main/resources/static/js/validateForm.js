@@ -476,11 +476,16 @@ jQuery(function($){
 					
 					$("#cambiarContraseña").click(function(){
 						var formulario = $("#cambioContra");
-						if($(formulario).valid()){
-							$(formulario).submit();
-						}else{
-							return false;
-						}
+						if ($("#antigua").val())
+							{
+							
+							}
+						
+//						if($(formulario).valid()){
+//							$(formulario).submit();
+//						}else{
+//							return false;
+//						}
 					});
 					
 				

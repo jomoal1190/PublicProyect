@@ -34,6 +34,7 @@
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
+     <link href="css/tooltipster.bundle.min.css" rel="stylesheet" media="all">
 
 </head>
 
@@ -111,6 +112,9 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/tooltipster.bundle.min.js"></script>
+      <script src="js/validateForm.js"></script>
     
     
 

@@ -39,7 +39,6 @@
     <!-- Main CSS-->
     <link href="${pageContext.request.contextPath}/css/theme.css" rel="stylesheet" media="all">
     <link href="${pageContext.request.contextPath}/css/tooltipster.bundle.min.css" rel="stylesheet" media="all">
-     <link href="${pageContext.request.contextPath}/css/tooltipster.bundle.min.css" rel="stylesheet" media="all">
      <link href="${pageContext.request.contextPath}/css/bootstrap-datetimepicker.css" rel="stylesheet" media="all">
        <link href="${pageContext.request.contextPath}/css/bootstrap-datepicker.css" rel="stylesheet" media="all">
 

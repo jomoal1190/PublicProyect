@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.umg.programacion2.model.User;
+import com.umg.programacion2.service.EstudianteService;
 import com.umg.programacion2.service.MenuService;
 import com.umg.programacion2.serviceImpl.UserServiceImpl;
 
@@ -28,6 +29,7 @@ public class LoginController {
     @Autowired
     private UserServiceImpl userService;
     @Autowired MenuService menuService;
+    @Autowired EstudianteService estudianteService;
 
     @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
     public String login(Model model){
@@ -59,24 +61,7 @@ public class LoginController {
         }
     }
 
-//    @RequestMapping(value="/home", method = RequestMethod.GET)
-//    public ModelAndView home(){
-//        ModelAndView modelAndView = new ModelAndView();
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        User user = userService.findUserByEmail(auth.getName());
-//        List<Menu> menu = menuService.getAllMenu();
-//        List<Menu> menuChildren = menuService.getAllChildren();
-//     
-//        modelAndView.addObject("menu", menu);
-//        modelAndView.addObject("children", menuChildren);
-//        modelAndView.addObject("pagina", "Home");
-//        
-//        modelAndView.addObject("userName", "Bienvenido " + user.getName() + " " + user.getLastName());
-//        modelAndView.addObject("adminMessage","Contendio habil para clientes");
-//        modelAndView.addObject("emailUser",user.getEmail());
-//        modelAndView.setViewName("home");
-//        return modelAndView;
-//    }
+
 
     
     @RequestMapping(value="/home", method = RequestMethod.GET)
@@ -84,14 +69,12 @@ public class LoginController {
     	 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
          User user = userService.findUserByEmail(auth.getName());
     	
-        List<Menu> menu = menuService.getAllMenu();
-        List<Menu> menuChildren = menuService.getAllChildren();
-       
-    	model.addAttribute("menu", menu);
-    	model.addAttribute("children", menuChildren);
+//        simpre incluir este metodo
+         
+        model.addAttribute("estudiantes", estudianteService.getAllEstudiantes()); 
+        model = menuService.getAllParameter(model);
     	model.addAttribute("pagina", "Home");
-    	model.addAttribute("userName","Bienvenido " + user.getName() + " " + user.getLastName());
-    	model.addAttribute("emailUser",user.getEmail());
+    	
         return "home";
     }
 

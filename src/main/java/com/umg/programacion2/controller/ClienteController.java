@@ -28,11 +28,9 @@ public class ClienteController {
 		
 		model.addAttribute("clientes", clientes);
 //	 	SIEMPRE LLAMAR A ESTA FUNCION
-	 	List<Menu> menu = menuService.getAllMenu();
-        List<Menu> menuChildren = menuService.getAllChildren();
-       
-    	model.addAttribute("menu", menu);
-    	model.addAttribute("children", menuChildren);
+		model = menuService.getAllParameter(model);
+		
+		
     	model.addAttribute("pagina", "Clientes");
         return "ventas/clientes/listClientes";
     }

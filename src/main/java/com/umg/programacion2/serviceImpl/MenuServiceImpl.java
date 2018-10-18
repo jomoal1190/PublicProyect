@@ -6,9 +6,13 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.umg.programacion2.model.Menu;
+import com.umg.programacion2.model.User;
 import com.umg.programacion2.repository.MenuRepository;
 import com.umg.programacion2.service.MenuService;
 
@@ -19,6 +23,7 @@ public class MenuServiceImpl  implements MenuService{
 	private static final String codigoCorrecto="success";
 	private static final String codigoERROR="error";
 	@Autowired MenuRepository menuRepository;
+	@Autowired UserServiceImpl userService;
 	
 	@Override
 	public List<Menu> getAllMenu() {
@@ -42,6 +47,24 @@ public class MenuServiceImpl  implements MenuService{
 		}
 		
 		return menu;
+	}
+
+	@Override
+	public Model getAllParameter(Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+		try {
+			model.addAttribute("menu", menuRepository.findAll());
+			model.addAttribute("children", menuRepository.findAllChildren());
+			model.addAttribute("userName","Bienvenido " + user.getName() + " " + user.getLastName());
+	    	model.addAttribute("emailUser",user.getEmail());
+	    	return model;
+			
+		}catch(Exception e)
+		{
+			return model;
+		}
+	
 	}
 
 }

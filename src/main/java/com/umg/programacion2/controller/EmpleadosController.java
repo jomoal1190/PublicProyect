@@ -30,12 +30,7 @@ public class EmpleadosController {
 	@Autowired MenuService menuService;
 	
 	
-//	 @RequestMapping(value="/listPuestos", method = RequestMethod.GET)
-//	    public String puestos(Model model) {
-//		 List<Puestos> puestos = empleadoService.getAllPuestos();
-//		 model.addAttribute("puestos", puestos);
-//	        return "listPuestos";
-//	    }
+
 	 
 	 @RequestMapping(value={"/ventas/empleados/puestos/listPuestos"}, method = RequestMethod.GET)
 	    public String listPuestos(Model model) {
@@ -44,11 +39,7 @@ public class EmpleadosController {
 		 
 		 
 //		 	SIEMPRE LLAMAR A ESTA FUNCION
-		 	List<Menu> menu = menuService.getAllMenu();
-	        List<Menu> menuChildren = menuService.getAllChildren();
-	       
-	    	model.addAttribute("menu", menu);
-	    	model.addAttribute("children", menuChildren);
+		    model = menuService.getAllParameter(model);
 	    	model.addAttribute("pagina", "Puestos");
 	        return "ventas/empleados/puestos/listPuestos";
 	    }
@@ -56,11 +47,7 @@ public class EmpleadosController {
 	 @RequestMapping(value="/ventas/empleados/puestos/addPuesto", method = RequestMethod.GET)
 	    public String addPuesto(Model model) {
 //		 	SIEMPRE LLAMAR A ESTA FUNCION
-		 	List<Menu> menu = menuService.getAllMenu();
-	        List<Menu> menuChildren = menuService.getAllChildren();
-	       
-	    	model.addAttribute("menu", menu);
-	    	model.addAttribute("children", menuChildren);
+		 	model = menuService.getAllParameter(model);
 	    	model.addAttribute("pagina", "Puestos");
 	        return "ventas/empleados/puestos/addPuesto";
 	    }
@@ -72,12 +59,9 @@ public class EmpleadosController {
 		 	
 		 	
 //		 	SIEMPRE LLAMAR A ESTA FUNCION
-		 	List<Menu> menu = menuService.getAllMenu();
-	        List<Menu> menuChildren = menuService.getAllChildren();
-	       
-	    	model.addAttribute("menu", menu);
-	    	model.addAttribute("children", menuChildren);
-	    	model.addAttribute("pagina", "Puestos");
+		 	model = menuService.getAllParameter(model);
+	    	
+		 	model.addAttribute("pagina", "Puestos");
 	        return "redirect:/ventas/empleados/puestos/listPuestos";
 	    }
 	 
@@ -97,11 +81,8 @@ public class EmpleadosController {
 		 	
 		 	
 //		 	SIEMPRE LLAMAR A ESTA FUNCION
-		 	List<Menu> menu = menuService.getAllMenu();
-	        List<Menu> menuChildren = menuService.getAllChildren();
-	       
-	    	model.addAttribute("menu", menu);
-	    	model.addAttribute("children", menuChildren);
+//	        simpre incluir este metodo
+	         model = menuService.getAllParameter(model);
 	    	model.addAttribute("pagina", "Puestos");
 	        return "ventas/empleados/puestos/updatePuesto";
 	    }
@@ -114,11 +95,8 @@ public class EmpleadosController {
 		 	model.addAttribute("codigo", resp);
 		 	
 //		 	SIEMPRE LLAMAR A ESTA FUNCION
-		 	List<Menu> menu = menuService.getAllMenu();
-	        List<Menu> menuChildren = menuService.getAllChildren();
-	       
-	    	model.addAttribute("menu", menu);
-	    	model.addAttribute("children", menuChildren);
+//	        simpre incluir este metodo
+	         model = menuService.getAllParameter(model);
 	    	model.addAttribute("pagina", "Puestos");
 	        return "redirect:/ventas/empleados/puestos/listPuestos";
 	    }
@@ -132,11 +110,8 @@ public class EmpleadosController {
 		 
 		 
 //		 	SIEMPRE LLAMAR A ESTA FUNCION
-		 	List<Menu> menu = menuService.getAllMenu();
-	        List<Menu> menuChildren = menuService.getAllChildren();
-	       
-	    	model.addAttribute("menu", menu);
-	    	model.addAttribute("children", menuChildren);
+//       simpre incluir este metodo
+            model = menuService.getAllParameter(model);
 	    	model.addAttribute("pagina", "Empleados");
 	        return "ventas/empleados/listEmpleados";
 	    }
@@ -147,11 +122,8 @@ public class EmpleadosController {
 		 	model.addAttribute("puestos", puestos);
 		 
 //		 	SIEMPRE LLAMAR A ESTA FUNCION
-		 	List<Menu> menu = menuService.getAllMenu();
-	        List<Menu> menuChildren = menuService.getAllChildren();
-	       
-	    	model.addAttribute("menu", menu);
-	    	model.addAttribute("children", menuChildren);
+//	        simpre incluir este metodo
+	         model = menuService.getAllParameter(model);
 	    	model.addAttribute("pagina", "Empleados");
 	        return "ventas/empleados/addEmpleado";
 	    }
@@ -163,11 +135,8 @@ public class EmpleadosController {
 		 	
 		 	
 //		 	SIEMPRE LLAMAR A ESTA FUNCION
-		 	List<Menu> menu = menuService.getAllMenu();
-	        List<Menu> menuChildren = menuService.getAllChildren();
-	       
-	    	model.addAttribute("menu", menu);
-	    	model.addAttribute("children", menuChildren);
+//	        simpre incluir este metodo
+	         model = menuService.getAllParameter(model);
 	    	model.addAttribute("pagina", "Puestos");
 	        return "redirect:/ventas/empleados/listEmpleados";
 	    }
@@ -179,16 +148,11 @@ public class EmpleadosController {
 		 	
 		 	Empleado resp = empleadoService.getEmpleadoId(request, response);
 		 	model.addAttribute("empleado", resp);
-		 	
-		 	List<Puestos> puestos = empleadoService.getAllPuestos();
-		 	model.addAttribute("puestos", puestos);
+
 		 	
 //		 	SIEMPRE LLAMAR A ESTA FUNCION
-		 	List<Menu> menu = menuService.getAllMenu();
-	        List<Menu> menuChildren = menuService.getAllChildren();
-	       
-	    	model.addAttribute("menu", menu);
-	    	model.addAttribute("children", menuChildren);
+//	        simpre incluir este metodo
+	         model = menuService.getAllParameter(model);
 	    	model.addAttribute("pagina", "Puestos");
 	        return "ventas/empleados/updateEmpleado";
 	    }
@@ -200,11 +164,8 @@ public class EmpleadosController {
 		 	
 		 	
 //		 	SIEMPRE LLAMAR A ESTA FUNCION
-		 	List<Menu> menu = menuService.getAllMenu();
-	        List<Menu> menuChildren = menuService.getAllChildren();
-	       
-	    	model.addAttribute("menu", menu);
-	    	model.addAttribute("children", menuChildren);
+//	        simpre incluir este metodo
+	         model = menuService.getAllParameter(model);
 	    	model.addAttribute("pagina", "Puestos");
 	        return "redirect:/ventas/empleados/listEmpleados";
 	    }

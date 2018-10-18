@@ -34,6 +34,7 @@
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
+    <link href="css/tooltipster.bundle.min.css" rel="stylesheet" media="all">
 
 </head>
 
@@ -59,7 +60,7 @@
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Contraseña">
                                 </div>
                                 <br>
-                                <button id="guardar" class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Iniciar Sesión</button>
+                                <button id="iniciarSesion" class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Iniciar Sesión</button>
                                 <div id="errorUser" style="display:none;text-align: center;color: red;" ><span>Error en usuario o contraseña</span></div>
                             </form>
                             <div class="register-link">
@@ -99,6 +100,9 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/tooltipster.bundle.min.js"></script>
+      <script src="js/validateForm.js"></script>
 
 </body>
 

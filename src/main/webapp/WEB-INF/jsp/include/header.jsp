@@ -67,6 +67,11 @@
                 <div class="container-fluid">
                 
                 	<ul class="navbar-mobile__list list-unstyled">
+                	<li>
+                    <a href="${pageContext.request.contextPath}/home">
+                       <i class="fas fa-home"></i>Home
+                          </a>
+                       </li>
                     	<c:forEach items="${menu}" var="m">
                     		<c:if test = "${m.padre == 0}">
                     		

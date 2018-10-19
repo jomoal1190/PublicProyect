@@ -18,7 +18,7 @@
                                 </div>
                                 <div class="table table-responsive">
                                 <c:if test="${not empty empleados}">
-                                    <table class="table table-responsive table-data2 ">
+                                    <table class="table table-data2 ">
                                         <thead>
                                             <tr>
                                               	<th>Id</th>

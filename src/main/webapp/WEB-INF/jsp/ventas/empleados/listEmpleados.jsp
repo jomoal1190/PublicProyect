@@ -18,7 +18,7 @@
                                 </div>
                                 <div class="table table-responsive">
                                 <c:if test="${not empty empleados}">
-                                    <table class="table table-data2 ">
+                                    <table class="table table-striped table-bordered nowrap" style="width:100%" id="table">
                                         <thead>
                                             <tr>
                                               	<th>Id</th>
@@ -33,8 +33,9 @@
                                                 <th>Fecha de Ingreso</th>
                                                 <th>Puesto</th>
                                                 
+                                                
                                                
-                                                <th></th>
+                                                <th>Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -123,7 +124,15 @@
                        	 $('#crear').click(function(){
                        		 document.location.href = 'addEmpleado'
                     			}); 
+                       	 
+                       	 var table = $('#table').DataTable( {
+                             responsive: true,
+                             fixedColumns:   {
+                                 rightColumns: 1
+                             }
+                         });
                     	}); 
+  				
   						
   				function eliminarEmpleado(id)
   		     	{

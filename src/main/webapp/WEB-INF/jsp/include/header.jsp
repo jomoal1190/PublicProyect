@@ -18,6 +18,10 @@
     <title>${pagina}</title>
 
     <!-- Fontfaces CSS-->
+           <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" media="all">
+ <link href="${pageContext.request.contextPath}/css/dataTables.bootstrap.min.css" rel="stylesheet" media="all">
+     <link href="${pageContext.request.contextPath}/css/fixedHeader.bootstrap.min.css" rel="stylesheet" media="all">
+       <link href="${pageContext.request.contextPath}/css/responsive.bootstrap.min.css" rel="stylesheet" media="all">
     <link href="${pageContext.request.contextPath}/css/font-face.css" rel="stylesheet" media="all">
     <link href="${pageContext.request.contextPath}/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="${pageContext.request.contextPath}/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
@@ -41,6 +45,10 @@
     <link href="${pageContext.request.contextPath}/css/tooltipster.bundle.min.css" rel="stylesheet" media="all">
      <link href="${pageContext.request.contextPath}/css/bootstrap-datetimepicker.css" rel="stylesheet" media="all">
        <link href="${pageContext.request.contextPath}/css/bootstrap-datepicker.css" rel="stylesheet" media="all">
+       
+       
+
+      
 
 </head>
 

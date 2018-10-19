@@ -50,6 +50,13 @@
       	 <script src="${pageContext.request.contextPath}/js/moment.min.js"></script>
       <script src="${pageContext.request.contextPath}/js/bootstrap-datetimepicker.min.js"></script>
       <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.js"></script>
+      
+<!--       datatables -->
+<script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/dataTables.bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/dataTables.fixedHeader.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/dataTables.responsive.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/responsive.bootstrap.min.js"></script>
   	
 </body>
 

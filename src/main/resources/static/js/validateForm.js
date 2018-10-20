@@ -110,11 +110,15 @@ jQuery(function($){
 						},
 						errorPlacement: function (error, element) {
 							if($(element).is("select")){
-								$(element).parent(".selectBox").addClass("is-invalid");
+								$(element).addClass("is-invalid");
 							}
 							var isInputFile = $(element).is("input[type='file']");
 							if (isInputFile) {
-								$(element).parent(".fancyFiled").addClass("is-invalid");
+								$(element).addClass("is-invalid");
+							}
+							var isInput = $(element).is("input[type='text']");
+							if (isInput) {
+								$(element).addClass("is-invalid");
 							}
 							var lastError = $(element).data("lastError"),
 			                newError = $(error).text();
@@ -123,35 +127,42 @@ jQuery(function($){
 		
 				            if(newError !== "" && newError !== lastError){
 				            	if (isInputFile) {
-				            		$(element).parent(".fancyFiled").tooltipster("content", newError);
-					                $(element).parent(".fancyFiled").tooltipster("enable");
-					                $(element).parent(".fancyFiled").tooltipster("show");
+				            		$(element).tooltipster("content", newError);
+					                $(element).tooltipster("enable");
+					                $(element).tooltipster("show");
 				            	} else {
 				            		$(element).tooltipster("content", newError);
 					                $(element).tooltipster("enable");
 					                $(element).tooltipster("show");
 				            	}
 				            	
-				                $("input[name].error, select[name].error, span.fancyFiled", "#registroUsuario").focus(function(){
+				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioPuesto").focus(function(){
 									$(this).tooltipster("show");
 								});
 				                
-				                $("input[name].error, select[name].error, span.fancyFiled", "#registroUsuario").blur(function(){
+				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioPuesto").blur(function(){
 									$(this).tooltipster("hide");
 								});
 				            }
 				        },
 				        success: function (label, element) {
+				   
 				        	var isInputFile = $(element).is("input[type='file']");
 				        	if($(element).is("select")){
-								$(element).parent(".selectBox").removeClass("is-invalid");
+								$(element).removeClass("is-invalid");
 								$(element).tooltipster("disable");
 							}
-				        	if (isInputFile) {
-								$(element).parent(".fancyFiled").removeClass("is-invalid");
-								$(element).parent(".fancyFiled").tooltipster("hide");
-						        $(element).parent(".fancyFiled").tooltipster("disable");
+				        	else if (isInputFile) {
+				        		
+								$(element).removeClass("is-invalid");
+								$(element).tooltipster("hide");
+						        $(element).tooltipster("disable");
 							}
+				        	else{
+				        		$(element).removeClass("is-invalid");
+								$(element).tooltipster("hide");
+						        $(element).tooltipster("disable");
+				        	} 
 				            $(element).tooltipster("hide");
 				            $(element).tooltipster("disable");
 				        }
@@ -185,11 +196,15 @@ jQuery(function($){
 						},
 						errorPlacement: function (error, element) {
 							if($(element).is("select")){
-								$(element).parent(".selectBox").addClass("is-invalid");
+								$(element).addClass("is-invalid");
 							}
 							var isInputFile = $(element).is("input[type='file']");
 							if (isInputFile) {
-								$(element).parent(".fancyFiled").addClass("is-invalid");
+								$(element).addClass("is-invalid");
+							}
+							var isInput = $(element).is("input[type='text']");
+							if (isInput) {
+								$(element).addClass("is-invalid");
 							}
 							var lastError = $(element).data("lastError"),
 			                newError = $(error).text();
@@ -198,20 +213,20 @@ jQuery(function($){
 		
 				            if(newError !== "" && newError !== lastError){
 				            	if (isInputFile) {
-				            		$(element).parent(".fancyFiled").tooltipster("content", newError);
-					                $(element).parent(".fancyFiled").tooltipster("enable");
-					                $(element).parent(".fancyFiled").tooltipster("show");
+				            		$(element).tooltipster("content", newError);
+					                $(element).tooltipster("enable");
+					                $(element).tooltipster("show");
 				            	} else {
 				            		$(element).tooltipster("content", newError);
 					                $(element).tooltipster("enable");
 					                $(element).tooltipster("show");
 				            	}
 				            	
-				                $("input[name].error, select[name].error, span.fancyFiled", "#loginForm").focus(function(){
+				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioPuesto").focus(function(){
 									$(this).tooltipster("show");
 								});
 				                
-				                $("input[name].error, select[name].error, span.fancyFiled", "#loginForm").blur(function(){
+				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioPuesto").blur(function(){
 									$(this).tooltipster("hide");
 								});
 				            }
@@ -219,14 +234,19 @@ jQuery(function($){
 				        success: function (label, element) {
 				        	var isInputFile = $(element).is("input[type='file']");
 				        	if($(element).is("select")){
-								$(element).parent(".selectBox").removeClass("is-invalid");
+								$(element).removeClass("is-invalid");
 								$(element).tooltipster("disable");
 							}
 				        	if (isInputFile) {
-								$(element).parent(".fancyFiled").removeClass("is-invalid");
-								$(element).parent(".fancyFiled").tooltipster("hide");
-						        $(element).parent(".fancyFiled").tooltipster("disable");
+								$(element).removeClass("is-invalid");
+								$(element).tooltipster("hide");
+						        $(element).tooltipster("disable");
 							}
+				        	else{
+				        		$(element).removeClass("is-invalid");
+								$(element).tooltipster("hide");
+						        $(element).tooltipster("disable");
+				        	} 
 				            $(element).tooltipster("hide");
 				            $(element).tooltipster("disable");
 				        }
@@ -252,15 +272,15 @@ jQuery(function($){
 						},
 						errorPlacement: function (error, element) {
 							if($(element).is("select")){
-								$(element).parent(".selectBox").addClass("is-invalid");
+								$(element).addClass("is-invalid");
 							}
 							var isInputFile = $(element).is("input[type='file']");
 							if (isInputFile) {
-								$(element).parent(".fancyFiled").addClass("is-invalid");
+								$(element).addClass("is-invalid");
 							}
 							var isInput = $(element).is("input[type='text']");
 							if (isInput) {
-								$(element).parent(".fancyFiled").addClass("is-invalid");
+								$(element).addClass("is-invalid");
 							}
 							var lastError = $(element).data("lastError"),
 			                newError = $(error).text();
@@ -269,9 +289,9 @@ jQuery(function($){
 		
 				            if(newError !== "" && newError !== lastError){
 				            	if (isInputFile) {
-				            		$(element).parent(".fancyFiled").tooltipster("content", newError);
-					                $(element).parent(".fancyFiled").tooltipster("enable");
-					                $(element).parent(".fancyFiled").tooltipster("show");
+				            		$(element).tooltipster("content", newError);
+					                $(element).tooltipster("enable");
+					                $(element).tooltipster("show");
 				            	} else {
 				            		$(element).tooltipster("content", newError);
 					                $(element).tooltipster("enable");
@@ -290,14 +310,19 @@ jQuery(function($){
 				        success: function (label, element) {
 				        	var isInputFile = $(element).is("input[type='file']");
 				        	if($(element).is("select")){
-								$(element).parent(".selectBox").removeClass("is-invalid");
+								$(element).removeClass("is-invalid");
 								$(element).tooltipster("disable");
 							}
 				        	if (isInputFile) {
-								$(element).parent(".fancyFiled").removeClass("is-invalid");
-								$(element).parent(".fancyFiled").tooltipster("hide");
-						        $(element).parent(".fancyFiled").tooltipster("disable");
+								$(element).removeClass("is-invalid");
+								$(element).tooltipster("hide");
+						        $(element).tooltipster("disable");
 							}
+				        	else{
+				        		$(element).removeClass("is-invalid");
+								$(element).tooltipster("hide");
+						        $(element).tooltipster("disable");
+				        	} 
 				            $(element).tooltipster("hide");
 				            $(element).tooltipster("disable");
 				        }
@@ -382,11 +407,15 @@ jQuery(function($){
 						},
 						errorPlacement: function (error, element) {
 							if($(element).is("select")){
-								$(element).parent(".selectBox").addClass("is-invalid");
+								$(element).addClass("is-invalid");
 							}
 							var isInputFile = $(element).is("input[type='file']");
 							if (isInputFile) {
-								$(element).parent(".fancyFiled").addClass("is-invalid");
+								$(element).addClass("is-invalid");
+							}
+							var isInput = $(element).is("input[type='text']");
+							if (isInput) {
+								$(element).addClass("is-invalid");
 							}
 							var lastError = $(element).data("lastError"),
 			                newError = $(error).text();
@@ -395,20 +424,20 @@ jQuery(function($){
 		
 				            if(newError !== "" && newError !== lastError){
 				            	if (isInputFile) {
-				            		$(element).parent(".fancyFiled").tooltipster("content", newError);
-					                $(element).parent(".fancyFiled").tooltipster("enable");
-					                $(element).parent(".fancyFiled").tooltipster("show");
+				            		$(element).tooltipster("content", newError);
+					                $(element).tooltipster("enable");
+					                $(element).tooltipster("show");
 				            	} else {
 				            		$(element).tooltipster("content", newError);
 					                $(element).tooltipster("enable");
 					                $(element).tooltipster("show");
 				            	}
 				            	
-				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioEmpleado").focus(function(){
+				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioPuesto").focus(function(){
 									$(this).tooltipster("show");
 								});
 				                
-				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioEmpleado").blur(function(){
+				                $("input[name].error, select[name].error, span.fancyFiled", "#formularioPuesto").blur(function(){
 									$(this).tooltipster("hide");
 								});
 				            }
@@ -416,14 +445,19 @@ jQuery(function($){
 				        success: function (label, element) {
 				        	var isInputFile = $(element).is("input[type='file']");
 				        	if($(element).is("select")){
-								$(element).parent(".selectBox").removeClass("is-invalid");
+								$(element).removeClass("is-invalid");
 								$(element).tooltipster("disable");
 							}
 				        	if (isInputFile) {
-								$(element).parent(".fancyFiled").removeClass("is-invalid");
-								$(element).parent(".fancyFiled").tooltipster("hide");
-						        $(element).parent(".fancyFiled").tooltipster("disable");
+								$(element).removeClass("is-invalid");
+								$(element).tooltipster("hide");
+						        $(element).tooltipster("disable");
 							}
+				        	else{
+				        		$(element).removeClass("is-invalid");
+								$(element).tooltipster("hide");
+						        $(element).tooltipster("disable");
+				        	} 
 				            $(element).tooltipster("hide");
 				            $(element).tooltipster("disable");
 				        }

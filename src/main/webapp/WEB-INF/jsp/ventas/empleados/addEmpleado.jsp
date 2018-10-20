@@ -28,7 +28,7 @@
                                              
                                                 <div class="col-6">
                                                 	<label for="telefono" class=" form-control-label">Telefono</label>
-                                                	<input type="text" id="telefono" name="telefono" placeholder="Telefono" class="form-control" required>
+                                                	<input type="text" id="telefono" name="telefono" placeholder="####-####" class="form-control" required>
                                                 </div>
                                             </div>
                                            

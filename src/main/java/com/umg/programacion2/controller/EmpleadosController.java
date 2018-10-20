@@ -47,6 +47,9 @@ public class EmpleadosController {
 	 @RequestMapping(value="/ventas/empleados/puestos/addPuesto", method = RequestMethod.GET)
 	    public String addPuesto(Model model) {
 //		 	SIEMPRE LLAMAR A ESTA FUNCION
+		 List<Puestos> puesto = empleadoService.getAllPuestos();
+		 	model.addAttribute("puestos", puesto);
+		 	
 		 	model = menuService.getAllParameter(model);
 	    	model.addAttribute("pagina", "Puestos");
 	        return "ventas/empleados/puestos/addPuesto";
@@ -78,18 +81,20 @@ public class EmpleadosController {
 		 	
 		 	Puestos puesto = empleadoService.getPuestoId(request, response);
 		 	model.addAttribute("puesto", puesto);
-		 	
+		 	 
 		 	
 //		 	SIEMPRE LLAMAR A ESTA FUNCION
 //	        simpre incluir este metodo
 	         model = menuService.getAllParameter(model);
+	         
+	       
 	    	model.addAttribute("pagina", "Puestos");
 	        return "ventas/empleados/puestos/updatePuesto";
 	    }
 	 
 	 @RequestMapping(value="/ventas/empleados/puestos/updatePuesto", method = RequestMethod.POST)
 	    public String updatePuesto(HttpServletRequest request, HttpServletResponse response, Model model, RedirectAttributes redirectAttributes) {
-		 	logger.info("LLEGAMOS A UPDATE");
+		 	
 		 	
 		 	String resp = empleadoService.updatePuesto(request, response);
 		 	model.addAttribute("codigo", resp);
@@ -144,11 +149,13 @@ public class EmpleadosController {
 	 
 	 	@RequestMapping(value="/ventas/empleados/updateEmpleado", method = RequestMethod.GET)
 	    public String findEmpleado(HttpServletRequest request, HttpServletResponse response, Model model, RedirectAttributes redirectAttributes) {
-		 	logger.info("LLEGAMOS A UPDATE");
+		 	
 		 	
 		 	Empleado resp = empleadoService.getEmpleadoId(request, response);
 		 	model.addAttribute("empleado", resp);
-
+		 	  List<Puestos> puestos = empleadoService.getAllPuestos();
+		         logger.info("Cantidad de puestos "+puestos.size());
+				 model.addAttribute("puestos", puestos);
 		 	
 //		 	SIEMPRE LLAMAR A ESTA FUNCION
 //	        simpre incluir este metodo

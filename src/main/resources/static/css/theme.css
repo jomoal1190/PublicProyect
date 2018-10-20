@@ -1707,6 +1707,9 @@ section {
     -moz-border-radius: 0;
     border-radius: 0;
 }
+select.form-control{
+height: 50% !important;
+}
 
 .header-mobile .hamburger .hamburger-box .hamburger-inner:before {
     width: 20px;

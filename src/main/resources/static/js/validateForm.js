@@ -110,11 +110,11 @@ jQuery(function($){
 						},
 						errorPlacement: function (error, element) {
 							if($(element).is("select")){
-								$(element).parent(".selectBox").addClass("error");
+								$(element).parent(".selectBox").addClass("is-invalid");
 							}
 							var isInputFile = $(element).is("input[type='file']");
 							if (isInputFile) {
-								$(element).parent(".fancyFiled").addClass("error");
+								$(element).parent(".fancyFiled").addClass("is-invalid");
 							}
 							var lastError = $(element).data("lastError"),
 			                newError = $(error).text();
@@ -144,11 +144,11 @@ jQuery(function($){
 				        success: function (label, element) {
 				        	var isInputFile = $(element).is("input[type='file']");
 				        	if($(element).is("select")){
-								$(element).parent(".selectBox").removeClass("error");
+								$(element).parent(".selectBox").removeClass("is-invalid");
 								$(element).tooltipster("disable");
 							}
 				        	if (isInputFile) {
-								$(element).parent(".fancyFiled").removeClass("error");
+								$(element).parent(".fancyFiled").removeClass("is-invalid");
 								$(element).parent(".fancyFiled").tooltipster("hide");
 						        $(element).parent(".fancyFiled").tooltipster("disable");
 							}
@@ -185,11 +185,11 @@ jQuery(function($){
 						},
 						errorPlacement: function (error, element) {
 							if($(element).is("select")){
-								$(element).parent(".selectBox").addClass("error");
+								$(element).parent(".selectBox").addClass("is-invalid");
 							}
 							var isInputFile = $(element).is("input[type='file']");
 							if (isInputFile) {
-								$(element).parent(".fancyFiled").addClass("error");
+								$(element).parent(".fancyFiled").addClass("is-invalid");
 							}
 							var lastError = $(element).data("lastError"),
 			                newError = $(error).text();
@@ -219,11 +219,11 @@ jQuery(function($){
 				        success: function (label, element) {
 				        	var isInputFile = $(element).is("input[type='file']");
 				        	if($(element).is("select")){
-								$(element).parent(".selectBox").removeClass("error");
+								$(element).parent(".selectBox").removeClass("is-invalid");
 								$(element).tooltipster("disable");
 							}
 				        	if (isInputFile) {
-								$(element).parent(".fancyFiled").removeClass("error");
+								$(element).parent(".fancyFiled").removeClass("is-invalid");
 								$(element).parent(".fancyFiled").tooltipster("hide");
 						        $(element).parent(".fancyFiled").tooltipster("disable");
 							}
@@ -252,11 +252,15 @@ jQuery(function($){
 						},
 						errorPlacement: function (error, element) {
 							if($(element).is("select")){
-								$(element).parent(".selectBox").addClass("error");
+								$(element).parent(".selectBox").addClass("is-invalid");
 							}
 							var isInputFile = $(element).is("input[type='file']");
 							if (isInputFile) {
-								$(element).parent(".fancyFiled").addClass("error");
+								$(element).parent(".fancyFiled").addClass("is-invalid");
+							}
+							var isInput = $(element).is("input[type='text']");
+							if (isInput) {
+								$(element).parent(".fancyFiled").addClass("is-invalid");
 							}
 							var lastError = $(element).data("lastError"),
 			                newError = $(error).text();
@@ -286,11 +290,11 @@ jQuery(function($){
 				        success: function (label, element) {
 				        	var isInputFile = $(element).is("input[type='file']");
 				        	if($(element).is("select")){
-								$(element).parent(".selectBox").removeClass("error");
+								$(element).parent(".selectBox").removeClass("is-invalid");
 								$(element).tooltipster("disable");
 							}
 				        	if (isInputFile) {
-								$(element).parent(".fancyFiled").removeClass("error");
+								$(element).parent(".fancyFiled").removeClass("is-invalid");
 								$(element).parent(".fancyFiled").tooltipster("hide");
 						        $(element).parent(".fancyFiled").tooltipster("disable");
 							}
@@ -378,11 +382,11 @@ jQuery(function($){
 						},
 						errorPlacement: function (error, element) {
 							if($(element).is("select")){
-								$(element).parent(".selectBox").addClass("error");
+								$(element).parent(".selectBox").addClass("is-invalid");
 							}
 							var isInputFile = $(element).is("input[type='file']");
 							if (isInputFile) {
-								$(element).parent(".fancyFiled").addClass("error");
+								$(element).parent(".fancyFiled").addClass("is-invalid");
 							}
 							var lastError = $(element).data("lastError"),
 			                newError = $(error).text();
@@ -412,11 +416,11 @@ jQuery(function($){
 				        success: function (label, element) {
 				        	var isInputFile = $(element).is("input[type='file']");
 				        	if($(element).is("select")){
-								$(element).parent(".selectBox").removeClass("error");
+								$(element).parent(".selectBox").removeClass("is-invalid");
 								$(element).tooltipster("disable");
 							}
 				        	if (isInputFile) {
-								$(element).parent(".fancyFiled").removeClass("error");
+								$(element).parent(".fancyFiled").removeClass("is-invalid");
 								$(element).parent(".fancyFiled").tooltipster("hide");
 						        $(element).parent(".fancyFiled").tooltipster("disable");
 							}

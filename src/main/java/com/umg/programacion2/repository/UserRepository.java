@@ -8,6 +8,7 @@ import com.umg.programacion2.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByEmail(String email);
+    User findById(Integer id);
 
 
 }

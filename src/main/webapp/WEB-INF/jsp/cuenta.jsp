@@ -10,7 +10,7 @@
                                     </div>
                                     <div class="card-body card-block">
                                         <form action="cambioContra" method="post" class="" id="cambioContra">
-                                            <input name="idEmpleado" value="${user.id}" type="hidden" />
+                                            <input name="idEmpleado" id="idEmpleado" value="${user.id}" type="hidden" />
                                              <div class="form-group">
 			                                    <label>Nombres</label>
 			                                    <input class="au-input au-input--full" type="text" name="name"  value="${user.name}">
@@ -25,17 +25,17 @@
 			                                </div>
                                             <div class="form-group">
                                                 <label for="antigua" class=" form-control-label">Antigua Contraseña</label>
-                                                <input type="password" id="antigua" name="antigua" placeholder="Antigua Contraseña" class="form-control" required>
+                                                <input type="password" id="antigua" name="antigua" placeholder="Antigua Contraseña" class="form-control" autocomplete="off" >
                                                 
                                             </div>
                                             <div class="form-group">
                                                 <label for="nueva" class=" form-control-label">Nueva Contraseña</label>
-                                                <input type="password" id="nueva" name="nueva" placeholder="Nueva Contraseña" class="form-control" required>
+                                                <input type="password" id="password" name="password" placeholder="Nueva Contraseña" class="form-control" >
                                                 
                                             </div>
                                             <div class="form-group">
                                                 <label for="confirmar" class=" form-control-label">Confirmar Contraseña</label>
-                                                <input type="password" id="confirmar" name="confirmar" placeholder="Confirmar Contraseña" class="form-control" required>
+                                                <input type="password" id="password2" name="password2" placeholder="Confirmar Contraseña" class="form-control">
                                                 
                                             </div>
                                           

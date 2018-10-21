@@ -4,7 +4,7 @@
 					
 <%@ include file = "../../../include/header.jsp" %>
 
-					<div class="row">
+					<div class="row rowAjuste">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
                                 <h3 class="title-5 m-b-35">Puestos</h3>
@@ -16,9 +16,9 @@
                                        
                                     </div>
                                 </div>
-                                <div class="table-responsive table-responsive-data2">
+                                <div class="table table-responsive">
                                 <c:if test="${not empty puestos}">
-                                    <table class="table table-data2">
+                                    <table class="table table-striped table-bordered nowrap" id="table">
                                         <thead>
                                             <tr>
                                               

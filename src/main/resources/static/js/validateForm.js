@@ -167,6 +167,116 @@ jQuery(function($){
 				            $(element).tooltipster("disable");
 				        }
 					});
+
+//					======================= VALIDACIONES FORMULARIO CAMBIO CONTRA ============================================	
+					
+					
+					$("#cambioContra").validate({
+						rules : {
+							name : {
+								required : true,
+							},
+							lastName : {
+								required : true,
+							},
+							email : {
+								required : true,
+								email: true
+							},
+							password : {
+								required :  function(element){
+						            return $("#antigua").val().length > 0;
+						        }
+,
+							},
+							password2 : {
+								required :  function(element){
+						            return $("#password").val().length > 0;
+						        },
+								equalTo: "#password"
+							},
+							
+						},
+						messages : {
+							name : {
+								required : msgRequiredGeneric,
+							},
+							lastName : {
+								required : msgRequiredGeneric,
+							},
+							email : {
+								required : msgRequiredGeneric,
+								email: msgRequiredEmail
+							},
+							password : {
+								required : msgRequiredGeneric,
+							},
+							password2 : {
+								required : msgRequiredGeneric,
+								equalTo: msgPassword
+							},
+							
+							
+						},
+						errorPlacement: function (error, element) {
+							if($(element).is("select")){
+								$(element).addClass("is-invalid");
+							}
+							var isInputFile = $(element).is("input[type='file']");
+							if (isInputFile) {
+								$(element).addClass("is-invalid");
+							}
+							var isInput = $(element).is("input[type='text']");
+							if (isInput) {
+								$(element).addClass("is-invalid");
+							}
+							var lastError = $(element).data("lastError"),
+			                newError = $(error).text();
+	
+				            $(element).data("lastError", newError);
+		
+				            if(newError !== "" && newError !== lastError){
+				            	if (isInputFile) {
+				            		$(element).tooltipster("content", newError);
+					                $(element).tooltipster("enable");
+					                $(element).tooltipster("show");
+				            	} else {
+				            		$(element).tooltipster("content", newError);
+					                $(element).tooltipster("enable");
+					                $(element).tooltipster("show");
+				            	}
+				            	
+				                $("input[name].error, select[name].error, span.fancyFiled", "#cambioContra").focus(function(){
+									$(this).tooltipster("show");
+								});
+				                
+				                $("input[name].error, select[name].error, span.fancyFiled", "#cambioContra").blur(function(){
+									$(this).tooltipster("hide");
+								});
+				            }
+				        },
+				        success: function (label, element) {
+				   
+				        	var isInputFile = $(element).is("input[type='file']");
+				        	if($(element).is("select")){
+								$(element).removeClass("is-invalid");
+								$(element).tooltipster("disable");
+							}
+				        	else if (isInputFile) {
+				        		
+								$(element).removeClass("is-invalid");
+								$(element).tooltipster("hide");
+						        $(element).tooltipster("disable");
+							}
+				        	else{
+				        		$(element).removeClass("is-invalid");
+								$(element).tooltipster("hide");
+						        $(element).tooltipster("disable");
+				        	} 
+				            $(element).tooltipster("hide");
+				            $(element).tooltipster("disable");
+				        }
+					});
 					
 					
 					
@@ -514,16 +624,45 @@ jQuery(function($){
 					
 					$("#cambiarContraseña").click(function(){
 						var formulario = $("#cambioContra");
-						if ($("#antigua").val())
+						var antigua = $("#antigua").val();
+						var id = $("#idEmpleado").val();
+						console.log(id);
+						if (antigua.length != 0)
 							{
+							url="/validarContra"
+					     		 $.ajax({                        
+						    		    type: "POST",                 
+						    		    url: url,                     
+						    		    data:{antigua: antigua, id: id},
+						    		    success: function(data)             
+						    	           {
+						    		    	if (data=="000")
+						    		    		{
+						    		    		alert("La contraseña no coincide con la registrada");
+						    		    		return false;
+						    		    		}
+						    		    	else{
+						    		    		if($(formulario).valid()){
+						    		    			console.log("valido")
+													$(formulario).submit();
+												}else{
+													return false;
+												}
+						    		    	}
+						    	           }
+						    		   });
 							
 							}
+						else{
+							console.log("sin cambio");
+							if($(formulario).valid()){
+								$(formulario).submit();
+							}else{
+								return false;
+							}
+						}
 						
-//						if($(formulario).valid()){
-//							$(formulario).submit();
-//						}else{
-//							return false;
-//						}
+						
 					});
 					
 				

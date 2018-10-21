@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +27,7 @@ import com.umg.programacion2.serviceImpl.UserServiceImpl;
 
 @Controller
 public class LoginController {
-
+	private static Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     private UserServiceImpl userService;
@@ -93,11 +95,38 @@ public class LoginController {
         return "cuenta";
     }
     
-    @RequestMapping(value="/validarContra", method = RequestMethod.POST)
-    @ResponseBody public String validarContra(HttpServletRequest request, HttpServletResponse response) {
-    	 
+
+    
+    @RequestMapping(value = "/cambioContra", method = RequestMethod.POST)
+    public String changeUser(HttpServletRequest request, HttpServletResponse response, Model model) {
+    	User user = userService.findUserByEmail(request.getParameter("email"));
+    	user.setId(Integer.parseInt(request.getParameter("idEmpleado")));
+        user.setEmail(request.getParameter("email"));
+        user.setLastName(request.getParameter("lastName"));
+        user.setName(request.getParameter("name"));
+        logger.info(request.getParameter("antigua"));
+        String updatePass="no";
+        if(!request.getParameter("antigua").equals(""))
+        {
+        	 logger.info("parametro en blanco "+request.getParameter("antigua"));
+        	 updatePass="si";
+        	user.setPassword(request.getParameter("password"));
+        }
+ 
+        
+       
+            userService.udpateUser(user,updatePass);            
+            return "redirect:/home";
+        
+    }
+    
+    @RequestMapping(value = "/validarContra", method = RequestMethod.POST)
+    public @ResponseBody String validarContraS(HttpServletRequest request, HttpServletResponse response) {
+    
     	
-        return "cuenta";
+            String respuesta =userService.validatePass(request, response);            
+            return respuesta;
+
     }
 
 }

@@ -39,6 +39,15 @@ public class LoginController {
        
         return "login";
     }
+    
+    @RequestMapping(value={"/error"}, method = RequestMethod.GET)
+    public String error(Model model){
+       
+    	 model.addAttribute("estudiantes", estudianteService.getAllEstudiantes()); 
+         model = menuService.getAllParameter(model);
+     	model.addAttribute("pagina", "Home");
+        return "home";
+    }
 
 
     @RequestMapping(value="/registro", method = RequestMethod.GET)
